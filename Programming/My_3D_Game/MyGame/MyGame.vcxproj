@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{C2BF3D0F-8F80-4FC6-9418-A4F29F9D6795}</ProjectGuid>
+    <RootNamespace>MyGame</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)/../External Software/ALMixer32/include;$(SolutionDir)/../External Software/DevIL32/include;$(SolutionDir)/../External Software/FreeType32/include;$(SolutionDir)/../External Software/GLEW32/include;$(SolutionDir)/../External Software/GLFW32/include;$(SolutionDir)/../External Software/GLM32/include;$(SolutionDir)/../External Software/OpenAL32/include;$(SolutionDir)/../External Software/OpenAL-Soft32/include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(SolutionDir)/../External Software/ALmixer32/lib;$(SolutionDir)/../External Software/DevIL32/lib;$(SolutionDir)/../External Software/FreeType32/lib;$(SolutionDir)/../External Software/GLEW32/lib;$(SolutionDir)/../External Software/GLFW32/lib;$(SolutionDir)/../External Software/OpenAL32/lib;$(SolutionDir)/../External Software/OpenGL32/lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ALmixer.lib;ALmixerWindowsMediaFoundation.lib;DevIL.lib;ILU.lib;ILUT.lib;freetype.lib;glew32.lib;glew32s.lib;glfw3.lib;glfw3dll.lib;OpenAL32.lib;EFX-Util.lib;GlU32.Lib;OpenGL32.Lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)/../External Software/ALmixer64/include;$(SolutionDir)/../External Software/DevIL64/include;$(SolutionDir)/../External Software/FreeType64/include;$(SolutionDir)/../External Software/GLEW64/include;$(SolutionDir)/../External Software/GLFW64/include;$(SolutionDir)/../External Software/GLM64/include;$(SolutionDir)/../External Software/OpenAL64/include;$(SolutionDir)/../External Software/OpenAL-Soft64/include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(SolutionDir)/../External Software/ALmixer64/lib;$(SolutionDir)/../External Software/DevIL64/lib;$(SolutionDir)/../External Software/FreeType64/lib;$(SolutionDir)/../External Software/GLEW64/lib;$(SolutionDir)/../External Software/GLFW64/lib;$(SolutionDir)/../External Software/OpenAL64/lib;$(SolutionDir)/../External Software/OpenGL64/lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ALmixer.lib;ALmixerWindowsMediaFoundation.lib;DevIL.lib;ILU.lib;ILUT.lib;freetype.lib;glew32.lib;glew32s.lib;glfw3.lib;glfw3dll.lib;OpenAL32.lib;EFX-Util.lib;GlU32.Lib;OpenGL32.Lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)/../External Software/ALMixer32/include;$(SolutionDir)/../External Software/DevIL32/include;$(SolutionDir)/../External Software/FreeType32/include;$(SolutionDir)/../External Software/GLEW32/include;$(SolutionDir)/../External Software/GLFW32/include;$(SolutionDir)/../External Software/GLM32/include;$(SolutionDir)/../External Software/OpenAL32/include;$(SolutionDir)/../External Software/OpenAL-Soft32/include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)/../External Software/ALmixer32/lib;$(SolutionDir)/../External Software/DevIL32/lib;$(SolutionDir)/../External Software/FreeType32/lib;$(SolutionDir)/../External Software/GLEW32/lib;$(SolutionDir)/../External Software/GLFW32/lib;$(SolutionDir)/../External Software/OpenAL32/lib;$(SolutionDir)/../External Software/OpenGL32/lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ALmixer.lib;ALmixerWindowsMediaFoundation.lib;DevIL.lib;ILU.lib;ILUT.lib;freetype.lib;glew32.lib;glew32s.lib;glfw3.lib;glfw3dll.lib;OpenAL32.lib;EFX-Util.lib;GlU32.Lib;OpenGL32.Lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)/../External Software/ALmixer64/include;$(SolutionDir)/../External Software/DevIL64/include;$(SolutionDir)/../External Software/FreeType64/include;$(SolutionDir)/../External Software/GLEW64/include;$(SolutionDir)/../External Software/GLFW64/include;$(SolutionDir)/../External Software/GLM64/include;$(SolutionDir)/../External Software/OpenAL64/include;$(SolutionDir)/../External Software/OpenAL-Soft64/include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)/../External Software/ALmixer64/lib;$(SolutionDir)/../External Software/DevIL64/lib;$(SolutionDir)/../External Software/FreeType64/lib;$(SolutionDir)/../External Software/GLEW64/lib;$(SolutionDir)/../External Software/GLFW64/lib;$(SolutionDir)/../External Software/OpenAL64/lib;$(SolutionDir)/../External Software/OpenGL64/lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ALmixer.lib;ALmixerWindowsMediaFoundation.lib;DevIL.lib;ILU.lib;ILUT.lib;freetype.lib;glew32.lib;glew32s.lib;glfw3.lib;glfw3dll.lib;OpenAL32.lib;EFX-Util.lib;GlU32.Lib;OpenGL32.Lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Basic OpenGL Stuff\ctext.cpp" />
+    <ClCompile Include="src\copyright\audio.cpp" />
+    <ClCompile Include="src\Basic OpenGL Stuff\basic_object.cpp" />
+    <ClCompile Include="src\Basic OpenGL Stuff\callbacks.cpp" />
+    <ClCompile Include="src\copyright\camera.cpp" />
+    <ClCompile Include="src\display.cpp" />
+    <ClCompile Include="src\game.cpp" />
+    <ClCompile Include="src\Basic OpenGL Stuff\game_math.cpp" />
+    <ClCompile Include="src\Player Stuff\hud.cpp" />
+    <ClCompile Include="src\Basic OpenGL Stuff\images.cpp" />
+    <ClCompile Include="src\Basic OpenGL Stuff\inputs.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\copyright\mesh.cpp" />
+    <ClCompile Include="src\Player Stuff\player.cpp" />
+    <ClCompile Include="src\settings.cpp" />
+    <ClCompile Include="src\copyright\shader.cpp" />
+    <ClCompile Include="src\copyright\text.cpp" />
+    <ClCompile Include="src\World Stuff\block.cpp" />
+    <ClCompile Include="src\World Stuff\cube.cpp" />
+    <ClCompile Include="src\copyright\vertice.cpp" />
+    <ClCompile Include="src\World Stuff\side.cpp" />
+    <ClCompile Include="src\World Stuff\world.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Basic OpenGL Stuff\ctext.h" />
+    <ClInclude Include="src\copyright\audio.h" />
+    <ClInclude Include="src\Basic OpenGL Stuff\basic_object.h" />
+    <ClInclude Include="src\Basic OpenGL Stuff\callbacks.h" />
+    <ClInclude Include="src\copyright\camera.h" />
+    <ClInclude Include="src\TODO\database.h" />
+    <ClInclude Include="src\display.h" />
+    <ClInclude Include="src\Basic OpenGL Stuff\game_math.h" />
+    <ClInclude Include="src\Player Stuff\hud.h" />
+    <ClInclude Include="src\Basic OpenGL Stuff\images.h" />
+    <ClInclude Include="src\copyright\model.h" />
+    <ClInclude Include="src\Basic OpenGL Stuff\inputs.h" />
+    <ClInclude Include="src\game.h" />
+    <ClInclude Include="src\TODO\main_menu.h" />
+    <ClInclude Include="src\copyright\mesh.h" />
+    <ClInclude Include="src\Player Stuff\player.h" />
+    <ClInclude Include="src\settings.h" />
+    <ClInclude Include="src\copyright\shader.h" />
+    <ClInclude Include="src\copyright\text.h" />
+    <ClInclude Include="src\World Stuff\block.h" />
+    <ClInclude Include="src\TODO\tile_door.h" />
+    <ClInclude Include="src\World Stuff\cube.h" />
+    <ClInclude Include="src\copyright\vertice.h" />
+    <ClInclude Include="src\World Stuff\side.h" />
+    <ClInclude Include="src\World Stuff\world.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

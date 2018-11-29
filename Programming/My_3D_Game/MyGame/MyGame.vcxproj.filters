@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files\com.larson.MyGame">
+      <UniqueIdentifier>{9ebb4a71-a387-4cf9-91e6-833ee0646ad0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\res">
+      <UniqueIdentifier>{e49783e2-8fc7-469f-8468-92443e65fc8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\com.larson.MyGame\Tiles">
+      <UniqueIdentifier>{09373c87-eafb-4bdc-b120-bf240586ec07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\com.larson.MyGame\Misc">
+      <UniqueIdentifier>{fa7a78cc-575d-45e8-95ff-86d09ebf750e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\com.larson.MyGame\TODO">
+      <UniqueIdentifier>{af739867-c23b-4dee-9303-a7fc7bb05096}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\com.larson.MyGame\Basic OpenGL">
+      <UniqueIdentifier>{5946d23e-125f-4712-a54a-75b55d73876b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\com.larson.MyGame\Audio">
+      <UniqueIdentifier>{b8606424-214a-4da5-af34-2bf0ee119cf3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\com.larson.MyGame\text">
+      <UniqueIdentifier>{c3187395-49e9-4550-ba86-635e9a301db8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\res\shaders">
+      <UniqueIdentifier>{e5d22567-4ded-4237-af32-1c6be9417a9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\res\textures">
+      <UniqueIdentifier>{f969ac97-5ff0-46ed-ae4d-3a21d6669556}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\res\music">
+      <UniqueIdentifier>{3fdb611a-a4dc-4add-bc74-1c05195a067d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\res\fonts">
+      <UniqueIdentifier>{0370ca97-d1e6-4b8b-9294-74f1ccd33ddc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\com.larson.MyGame\copyright">
+      <UniqueIdentifier>{211e935b-986c-457f-bf7a-c7e106b9a808}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Basic OpenGL Stuff\basic_object.cpp">
+      <Filter>Source Files\com.larson.MyGame\Basic OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Basic OpenGL Stuff\callbacks.cpp">
+      <Filter>Source Files\com.larson.MyGame\Basic OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Basic OpenGL Stuff\game_math.cpp">
+      <Filter>Source Files\com.larson.MyGame\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Basic OpenGL Stuff\inputs.cpp">
+      <Filter>Source Files\com.larson.MyGame\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\copyright\audio.cpp">
+      <Filter>Source Files\com.larson.MyGame\copyright</Filter>
+    </ClCompile>
+    <ClCompile Include="src\copyright\camera.cpp">
+      <Filter>Source Files\com.larson.MyGame\copyright</Filter>
+    </ClCompile>
+    <ClCompile Include="src\display.cpp">
+      <Filter>Source Files\com.larson.MyGame\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game.cpp">
+      <Filter>Source Files\com.larson.MyGame\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Source Files\com.larson.MyGame\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\World Stuff\world.cpp">
+      <Filter>Source Files\com.larson.MyGame\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\copyright\text.cpp">
+      <Filter>Source Files\com.larson.MyGame\copyright</Filter>
+    </ClCompile>
+    <ClCompile Include="src\copyright\shader.cpp">
+      <Filter>Source Files\com.larson.MyGame\copyright</Filter>
+    </ClCompile>
+    <ClCompile Include="src\copyright\mesh.cpp">
+      <Filter>Source Files\com.larson.MyGame\copyright</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Player Stuff\player.cpp">
+      <Filter>Source Files\com.larson.MyGame\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Player Stuff\hud.cpp">
+      <Filter>Source Files\com.larson.MyGame\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Basic OpenGL Stuff\ctext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\settings.cpp">
+      <Filter>Source Files\com.larson.MyGame\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\copyright\vertice.cpp">
+      <Filter>Source Files\com.larson.MyGame\copyright</Filter>
+    </ClCompile>
+    <ClCompile Include="src\World Stuff\block.cpp">
+      <Filter>Source Files\com.larson.MyGame\Tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\World Stuff\cube.cpp">
+      <Filter>Source Files\com.larson.MyGame\Tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Basic OpenGL Stuff\images.cpp">
+      <Filter>Source Files\com.larson.MyGame\Basic OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\World Stuff\side.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Basic OpenGL Stuff\basic_object.h">
+      <Filter>Source Files\com.larson.MyGame\Basic OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Basic OpenGL Stuff\callbacks.h">
+      <Filter>Source Files\com.larson.MyGame\Basic OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Basic OpenGL Stuff\game_math.h">
+      <Filter>Source Files\com.larson.MyGame\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Basic OpenGL Stuff\inputs.h">
+      <Filter>Source Files\com.larson.MyGame\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\copyright\audio.h">
+      <Filter>Source Files\com.larson.MyGame\copyright</Filter>
+    </ClInclude>
+    <ClInclude Include="src\display.h">
+      <Filter>Source Files\com.larson.MyGame\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game.h">
+      <Filter>Source Files\com.larson.MyGame\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\World Stuff\world.h">
+      <Filter>Source Files\com.larson.MyGame\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TODO\tile_door.h">
+      <Filter>Source Files\com.larson.MyGame\TODO</Filter>
+    </ClInclude>
+    <ClInclude Include="src\copyright\text.h">
+      <Filter>Source Files\com.larson.MyGame\copyright</Filter>
+    </ClInclude>
+    <ClInclude Include="src\copyright\shader.h">
+      <Filter>Source Files\com.larson.MyGame\copyright</Filter>
+    </ClInclude>
+    <ClInclude Include="src\settings.h">
+      <Filter>Source Files\com.larson.MyGame\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\copyright\model.h">
+      <Filter>Source Files\com.larson.MyGame\Basic OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\copyright\mesh.h">
+      <Filter>Source Files\com.larson.MyGame\copyright</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Player Stuff\player.h">
+      <Filter>Source Files\com.larson.MyGame\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Player Stuff\hud.h">
+      <Filter>Source Files\com.larson.MyGame\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TODO\main_menu.h">
+      <Filter>Source Files\com.larson.MyGame\TODO</Filter>
+    </ClInclude>
+    <ClInclude Include="src\copyright\camera.h">
+      <Filter>Source Files\com.larson.MyGame\copyright</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TODO\database.h">
+      <Filter>Source Files\com.larson.MyGame\TODO</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Basic OpenGL Stuff\ctext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\copyright\vertice.h">
+      <Filter>Source Files\com.larson.MyGame\copyright</Filter>
+    </ClInclude>
+    <ClInclude Include="src\World Stuff\block.h">
+      <Filter>Source Files\com.larson.MyGame\Tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\World Stuff\cube.h">
+      <Filter>Source Files\com.larson.MyGame\Tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Basic OpenGL Stuff\images.h">
+      <Filter>Source Files\com.larson.MyGame\Basic OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\World Stuff\side.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
