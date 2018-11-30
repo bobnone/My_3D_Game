@@ -2,15 +2,15 @@
 #define BASICOBJECT_H
 
 #include "game_math.h"
-#include "../copyright/camera.h"
-#include "../copyright/mesh.h"
+#include "../Basic OpenGL Stuff/images.h"
+#include "../Copyright/camera.h"
+#include "../Copyright/mesh.h"
 
 class BasicObject
 {
 public:
 	mat4 getModel() const;
 	mat4 getMVP(const Camera& camera) const;
-	bool isSolid();
 	// Position:
 	void setPosition(vec3 position);
 	void setPosition(float x, float y, float z);
@@ -21,16 +21,6 @@ public:
 	float getPositionX();
 	float getPositionY();
 	float getPositionZ();
-	// WorldCords:
-	void setWorldCords(vec3 position);
-	void setWorldCords(float x, float y, float z);
-	void setWorldCordsX(float x);
-	void setWorldCordsY(float y);
-	void setWorldCordsZ(float z);
-	vec3 getWorldCords();
-	float getWorldCordsX();
-	float getWorldCordsY();
-	float getWorldCordsZ();
 	// Rotation (Axis Rotation + Position):
 	void setRotation(vec3 rotation);
 	void setRotation(float x, float y, float z);
@@ -57,14 +47,14 @@ public:
 	float getScaleY();
 	float getScaleZ();
 	Mesh* getMesh();
+	GLuint getTexture();
 protected:
-	bool solid;
 	vec3 position; //<x, y, z> // Position on the screen (Offset from worldCords)
-	vec3 worldCords; //<x, y, z> // Position in the world
 	vec3 rotation; //<x, y, z>
 	vec3 scale; //<x, y, z>
 	Mesh* mesh;
-	void setSolid(bool solid);
+	GLuint textureID;
+	Images* images;
 private:
 };
 #endif

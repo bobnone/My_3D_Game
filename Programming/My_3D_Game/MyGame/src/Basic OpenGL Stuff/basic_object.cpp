@@ -17,14 +17,6 @@ mat4 BasicObject::getMVP(const Camera& camera) const
 	mat4 M = getModel();
 	return VP * M;//camera.getViewProjection() * getModel();
 }
-bool BasicObject::isSolid()
-{
-	return solid;
-}
-void BasicObject::setSolid(bool solid)
-{
-	this->solid = solid;
-}
 void BasicObject::setPosition(vec3 position)
 {
 	this->position = position;
@@ -159,6 +151,22 @@ void BasicObject::setRotationDegreesZ(int z)
 		setPositionY(position.y+1.0f);
 	}
 }*/
+vec3 BasicObject::getRotation()
+{
+	return rotation;
+}
+float BasicObject::getRotationX()
+{
+	return rotation.x;
+}
+float BasicObject::getRotationY()
+{
+	return rotation.y;
+}
+float BasicObject::getRotationZ()
+{
+	return rotation.z;
+}
 void BasicObject::setScale(vec3 scale)
 {
 	this->scale = scale;
@@ -198,4 +206,8 @@ float BasicObject::getScaleZ()
 Mesh* BasicObject::getMesh()
 {
 	return mesh;
+}
+GLuint BasicObject::getTexture()
+{
+	return textureID;
 }

@@ -4,8 +4,8 @@
 class GameMath
 {
 public:
-	const double PI = 3.14159;
-	const double TWOPI = 6.28319;
+	static constexpr double PI = 3.14159;
+	static constexpr double TWOPI = 6.28319;
 
 	// Used to convert from radians to degrees
 	static const double getRadians(int degrees);
