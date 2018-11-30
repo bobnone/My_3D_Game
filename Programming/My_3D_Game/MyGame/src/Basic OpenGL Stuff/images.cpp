@@ -188,7 +188,7 @@ GLuint Images::genTexture(ILuint imageID)
 	setTexture(textureID);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	// This function calls glTexImage2D after performing any required conversions. The Level parameter allows you to manually set mipmaps.
 	error = !ilutGLTexImage(0);
@@ -197,6 +197,8 @@ GLuint Images::genTexture(ILuint imageID)
 		fprintf(stderr, "ERROR: Failed to load texture from image \"%s\"\n", imageID);
 		//Game::crash();
 	}
+	// Builds Mipmaps from the current texture
+	glGenerateMipmap(GL_TEXTURE_2D);
 	return textureID;
 }
 // Used to set the current texture

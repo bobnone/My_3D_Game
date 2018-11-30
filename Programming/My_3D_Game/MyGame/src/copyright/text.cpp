@@ -52,7 +52,8 @@ Text::Text(const char* fileName, const float width, const float height)
 		};
 		Characters.insert(pair<GLchar, ScreenCharacter>(c, character));
 	}
-	glBindTexture(GL_TEXTURE_2D, 0);
+	// Unbind Texture
+	glBindTexture(GL_TEXTURE_2D, NULL);
 	// Destroy FreeType once we're finished
 	FT_Done_Face(face);
 	FT_Done_FreeType(ft);
@@ -105,7 +106,6 @@ void Text::draw(string text, GLfloat x, GLfloat y, GLfloat scale, vec3 color)
 		// Update content of VBO memory
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);
 		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices); // Be sure to use glBufferSubData and not glBufferData
-
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		// Render quad
 		glDrawArrays(GL_TRIANGLES, 0, 6);

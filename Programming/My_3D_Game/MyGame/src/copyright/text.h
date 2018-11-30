@@ -8,7 +8,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <ft2build.h>
-#include <freetype/freetype.h>
+#include FT_FREETYPE_H 
 using namespace std;
 using namespace glm;
 #include "shader.h"
@@ -16,10 +16,10 @@ using namespace glm;
 // Holds all state information relevant to a character as loaded using FreeType
 struct ScreenCharacter
 {
-	GLuint TextureID;   // ID handle of the glyph texture
-	ivec2 Size;    // Size of glyph
-	ivec2 Bearing;  // Offset from baseline to left/top of glyph
-	GLuint Advance;    // Horizontal offset to advance to next glyph
+	GLuint TextureID; // ID handle of the glyph texture
+	ivec2 Size;       // Size of glyph
+	ivec2 Bearing;    // Offset from baseline to left/top of glyph
+	GLuint Advance;   // Horizontal offset to advance to next glyph
 };
 
 class Text

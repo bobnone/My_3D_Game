@@ -8,17 +8,15 @@ Mesh::Mesh(int type)
 	case MESH_RECTANGLE:
 		genRectangleMesh();
 		break;
-	defult: //MESH_TRIANGLE
+	case MESH_HEXAGON:
+		genHexagonMesh();
+		break;
+	defult:// MESH_TRIANGLE
 		genTriangleMesh();
 		break;
 	}
 }
 // Used to create a custom mesh
-Mesh::Mesh(Vertice* vertices, unsigned int* indices)
-{
-	init(vertices, (sizeof(vertices) / sizeof(vertices[0])), indices, (sizeof(indices) / sizeof(indices[0])));
-}
-// Used to create a custom mesh and manually specify the size
 Mesh::Mesh(Vertice* vertices, unsigned int numVertices, unsigned int* indices, unsigned int numIndices)
 {
 	init(vertices, numVertices, indices, numIndices);
@@ -34,7 +32,7 @@ void Mesh::draw()
 	glDrawElementsBaseVertex(GL_TRIANGLES, numIndices, GL_UNSIGNED_INT, 0, 0);
 	glBindVertexArray(NULL);
 }
-void Mesh::init(Vertice* vertices, unsigned int numVertices, unsigned int* indices, unsigned int numIndices, float boolean)
+void Mesh::init(Vertice* vertices, unsigned int numVertices, unsigned int* indices, unsigned int numIndices)
 {
 	this->numIndices = numIndices;
 	Model model;
@@ -42,6 +40,7 @@ void Mesh::init(Vertice* vertices, unsigned int numVertices, unsigned int* indic
 	{
 		model.position.push_back(*vertices[i].getPosition());
 		model.texCoords.push_back(*vertices[i].getTexCoords());
+		model.color.push_back(*vertices[i].getColor());
 		model.normal.push_back(*vertices[i].getNormal());
 	}
 	for (unsigned int i = 0; i < numIndices; i++)
@@ -53,20 +52,24 @@ void Mesh::init(Vertice* vertices, unsigned int numVertices, unsigned int* indic
 	glGenBuffers(NUM_BUFFERS, buffers);
 	glBindBuffer(GL_ARRAY_BUFFER, buffers[MBP_POSITION]);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(model.position[0]) * model.position.size(), &model.position[0], GL_STATIC_DRAW);
-	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+	glEnableVertexAttribArray(0);
+
 	glBindBuffer(GL_ARRAY_BUFFER, buffers[MBP_TEXCOORDS]);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(model.texCoords[0]) * model.texCoords.size(), &model.texCoords[0], GL_STATIC_DRAW);
-	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
+	glEnableVertexAttribArray(1);
+
+	glBindBuffer(GL_ARRAY_BUFFER, buffers[MBP_COLOR]);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(model.color[0]) * model.color.size(), &model.color[0], GL_STATIC_DRAW);
+	glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, 0, 0);
+	glEnableVertexAttribArray(2);
+
 	glBindBuffer(GL_ARRAY_BUFFER, buffers[MBP_NORMAL]);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(model.normal[0]) * model.normal.size(), &model.normal[0], GL_STATIC_DRAW);
-	glEnableVertexAttribArray(2);
-	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, 0);
-	glBindBuffer(GL_ARRAY_BUFFER, buffers[MBP_BOOLEAN]);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(GL_FLOAT), &boolean, GL_STATIC_DRAW);
+	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, 0, 0);
 	glEnableVertexAttribArray(3);
-	glVertexAttribPointer(3, 1, GL_FLOAT, GL_FALSE, 0, 0);
+
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[MBP_INDEX]);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(model.indices[0]) * model.indices.size(), &model.indices[0], GL_STATIC_DRAW);
 	glBindVertexArray(NULL);
@@ -93,4 +96,18 @@ void Mesh::genRectangleMesh()
 	};
 	unsigned int indices[] = { 2, 0, 1 , 1, 3, 2 };
 	init(vertices, 4, indices, 6);
+}
+void Mesh::genHexagonMesh()
+{
+	Vertice vertices[] =
+	{
+		Vertice(vec3(0.5f, 1.0f, 0.0f), vec2(1, 0)),// Bottom Center 0
+		Vertice(vec3(0.0f, 0.75f, 0.0f), vec2(1, 0)),// Bottom Left  1
+		Vertice(vec3(1.0f, 0.75f, 0.0f), vec2(0, 0)),// Bottom Right 2
+		Vertice(vec3(0.0f, 0.25f, 0.0f), vec2(1, 1)),// Top Left     3
+		Vertice(vec3(1.0f, 0.25f, 0.0f), vec2(0, 1)),// Top Right    4
+		Vertice(vec3(0.5f, 0.0f, 0.0f), vec2(0, 1)) // Top Center    5
+	};
+	unsigned int indices[] = { 3, 5, 4 , 1, 3, 4, 1, 2, 4 , 1, 0, 2 };
+	init(vertices, 6, indices, 6);
 }

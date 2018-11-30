@@ -19,8 +19,8 @@ Shader::Shader(const string& fileName)
 	}
 	glBindAttribLocation(program, 0, "position");
 	glBindAttribLocation(program, 1, "texCoords");
-	glBindAttribLocation(program, 2, "normal");
-	glBindAttribLocation(program, 3, "boolean");
+	glBindAttribLocation(program, 2, "color");
+	glBindAttribLocation(program, 3, "normal");
 	glLinkProgram(program);
 	CheckShaderError(program, GL_LINK_STATUS, true, "Error linking shader program");
 	glValidateProgram(program);

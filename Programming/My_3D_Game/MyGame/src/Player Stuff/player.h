@@ -15,7 +15,7 @@ public:
 	string getUserName();
 	GLuint getTexture();
 	Camera* getCamera();
-	void updateProjection(const int width, const int height, float aspectRatio, float zNear = 0.1f, float zFar = 100.0f, float fov = 70.0f);
+	void updateProjection(const int width, const int height, float aspectRatio, float zNear = 0.1f, float zFar = 100.0f, float fov = 45.0f);
 	// Movement:
 	void moveRight(float amount);
 	void moveUp(float amount);

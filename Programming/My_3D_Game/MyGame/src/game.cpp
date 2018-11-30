@@ -61,7 +61,6 @@ void Game::init()
 	// Init DevIL
 	ilInit();
 	iluInit();
-	ilutInit();
 	// Tell DevIL to use OpenGL
 	ilutRenderer(ILUT_OPENGL);
 	// Disables GPU on-board conversion (everything => 16-bit), allowing DevIL to handle everything

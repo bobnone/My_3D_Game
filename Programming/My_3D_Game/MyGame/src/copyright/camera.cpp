@@ -6,11 +6,11 @@ Camera::Camera(const vec3& position, float fov, float aspect, float zNear, float
 	this->right = vec3(1.0f, 0.0f, 0.0f);
 	this->up = vec3(0.0f, 1.0f, 0.0f);
 	this->forward = vec3(0.0f, 0.0f, 1.0f);
-	this->projection = perspective(fov, aspect, zNear, zFar);
+	this->projection = perspective(radians(fov), aspect, zNear, zFar);
 }
 void Camera::updateProjection(float fov, float aspect, float zNear, float zFar)
 {
-	this->projection = perspective(fov, aspect, zNear, zFar);
+	this->projection = perspective(radians(fov), aspect, zNear, zFar);
 }
 mat4 Camera::getViewProjection() const
 {

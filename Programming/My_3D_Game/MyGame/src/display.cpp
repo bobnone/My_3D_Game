@@ -103,7 +103,7 @@ Display::Display(Settings* settings)
 void Display::clear()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 }
 void Display::update()
 {
@@ -161,7 +161,7 @@ void Display::init()
 {
 	images = new Images();
 	quadMesh = new Mesh(MESH_RECTANGLE);
-	shader = new Shader("./Data/myShader");
+	shader = new Shader("./Data/gameShader");
 	text = new Text("./Data/textShader", settings->getWindowWidth(), settings->getWindowHeight());
 	world = new World(images);
 	player = new Player(images, quadMesh, "bobnone", "./Resources/Textures/ANOTHERCHARACTERRRRquestionmark1.png", settings->getAspectRatio());

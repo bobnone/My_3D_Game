@@ -80,9 +80,6 @@
     <ClCompile Include="src\Player Stuff\hud.cpp">
       <Filter>Source Files\com.larson.MyGame\Misc</Filter>
     </ClCompile>
-    <ClCompile Include="src\Basic OpenGL Stuff\ctext.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\settings.cpp">
       <Filter>Source Files\com.larson.MyGame\Misc</Filter>
     </ClCompile>
@@ -110,8 +107,11 @@
     <ClCompile Include="src\Copyright\text.cpp">
       <Filter>Source Files\com.larson.MyGame\copyright</Filter>
     </ClCompile>
-    <ClCompile Include="src\Copyright\vertice.cpp">
+    <ClCompile Include="src\Basic OpenGL Stuff\vertice.cpp">
       <Filter>Source Files\com.larson.MyGame\copyright</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Copyright\ctext.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -154,9 +154,6 @@
     <ClInclude Include="src\TODO\database.h">
       <Filter>Source Files\com.larson.MyGame\TODO</Filter>
     </ClInclude>
-    <ClInclude Include="src\Basic OpenGL Stuff\ctext.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\World Stuff\block.h">
       <Filter>Source Files\com.larson.MyGame\Tiles</Filter>
     </ClInclude>
@@ -175,17 +172,20 @@
     <ClInclude Include="src\Copyright\mesh.h">
       <Filter>Source Files\com.larson.MyGame\copyright</Filter>
     </ClInclude>
-    <ClInclude Include="src\Copyright\model.h">
-      <Filter>Source Files\com.larson.MyGame\Basic OpenGL</Filter>
-    </ClInclude>
     <ClInclude Include="src\Copyright\shader.h">
       <Filter>Source Files\com.larson.MyGame\copyright</Filter>
     </ClInclude>
     <ClInclude Include="src\Copyright\text.h">
       <Filter>Source Files\com.larson.MyGame\copyright</Filter>
     </ClInclude>
-    <ClInclude Include="src\Copyright\vertice.h">
+    <ClInclude Include="src\Basic OpenGL Stuff\vertice.h">
       <Filter>Source Files\com.larson.MyGame\copyright</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Basic OpenGL Stuff\model.h">
+      <Filter>Source Files\com.larson.MyGame\Basic OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Copyright\ctext.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

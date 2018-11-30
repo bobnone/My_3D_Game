@@ -146,7 +146,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Basic OpenGL Stuff\ctext.cpp" />
+    <ClCompile Include="src\Copyright\ctext.cpp" />
     <ClCompile Include="src\Copyright\audio.cpp" />
     <ClCompile Include="src\Basic OpenGL Stuff\basic_object.cpp" />
     <ClCompile Include="src\Basic OpenGL Stuff\callbacks.cpp" />
@@ -165,11 +165,11 @@
     <ClCompile Include="src\Copyright\text.cpp" />
     <ClCompile Include="src\World Stuff\block.cpp" />
     <ClCompile Include="src\World Stuff\cube.cpp" />
-    <ClCompile Include="src\Copyright\vertice.cpp" />
+    <ClCompile Include="src\Basic OpenGL Stuff\vertice.cpp" />
     <ClCompile Include="src\World Stuff\world.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Basic OpenGL Stuff\ctext.h" />
+    <ClInclude Include="src\Copyright\ctext.h" />
     <ClInclude Include="src\Copyright\audio.h" />
     <ClInclude Include="src\Basic OpenGL Stuff\basic_object.h" />
     <ClInclude Include="src\Basic OpenGL Stuff\callbacks.h" />
@@ -179,7 +179,7 @@
     <ClInclude Include="src\Basic OpenGL Stuff\game_math.h" />
     <ClInclude Include="src\Player Stuff\hud.h" />
     <ClInclude Include="src\Basic OpenGL Stuff\images.h" />
-    <ClInclude Include="src\Copyright\model.h" />
+    <ClInclude Include="src\Basic OpenGL Stuff\model.h" />
     <ClInclude Include="src\Basic OpenGL Stuff\inputs.h" />
     <ClInclude Include="src\game.h" />
     <ClInclude Include="src\TODO\main_menu.h" />
@@ -191,7 +191,7 @@
     <ClInclude Include="src\World Stuff\block.h" />
     <ClInclude Include="src\TODO\tile_door.h" />
     <ClInclude Include="src\World Stuff\cube.h" />
-    <ClInclude Include="src\Copyright\vertice.h" />
+    <ClInclude Include="src\Basic OpenGL Stuff\vertice.h" />
     <ClInclude Include="src\World Stuff\world.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
