@@ -53,9 +53,6 @@
     <ClCompile Include="src\Basic OpenGL Stuff\basic_object.cpp">
       <Filter>Source Files\com.larson.MyGame\Basic OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="src\Basic OpenGL Stuff\callbacks.cpp">
-      <Filter>Source Files\com.larson.MyGame\Basic OpenGL</Filter>
-    </ClCompile>
     <ClCompile Include="src\Basic OpenGL Stuff\game_math.cpp">
       <Filter>Source Files\com.larson.MyGame\Misc</Filter>
     </ClCompile>
@@ -95,9 +92,6 @@
     <ClCompile Include="src\Copyright\audio.cpp">
       <Filter>Source Files\com.larson.MyGame\copyright</Filter>
     </ClCompile>
-    <ClCompile Include="src\Copyright\camera.cpp">
-      <Filter>Source Files\com.larson.MyGame\copyright</Filter>
-    </ClCompile>
     <ClCompile Include="src\Copyright\mesh.cpp">
       <Filter>Source Files\com.larson.MyGame\copyright</Filter>
     </ClCompile>
@@ -113,18 +107,24 @@
     <ClCompile Include="src\Copyright\ctext.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Copyright\TempCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\callbacks.cpp">
+      <Filter>Source Files\com.larson.MyGame\Basic OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Basic OpenGL Stuff\camera1.cpp">
+      <Filter>Source Files\com.larson.MyGame\copyright</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Copyright\camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Basic OpenGL Stuff\basic_object.h">
       <Filter>Source Files\com.larson.MyGame\Basic OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="src\Basic OpenGL Stuff\callbacks.h">
-      <Filter>Source Files\com.larson.MyGame\Basic OpenGL</Filter>
-    </ClInclude>
     <ClInclude Include="src\Basic OpenGL Stuff\game_math.h">
-      <Filter>Source Files\com.larson.MyGame\Misc</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Basic OpenGL Stuff\inputs.h">
       <Filter>Source Files\com.larson.MyGame\Misc</Filter>
     </ClInclude>
     <ClInclude Include="src\display.h">
@@ -166,9 +166,6 @@
     <ClInclude Include="src\Copyright\audio.h">
       <Filter>Source Files\com.larson.MyGame\copyright</Filter>
     </ClInclude>
-    <ClInclude Include="src\Copyright\camera.h">
-      <Filter>Source Files\com.larson.MyGame\copyright</Filter>
-    </ClInclude>
     <ClInclude Include="src\Copyright\mesh.h">
       <Filter>Source Files\com.larson.MyGame\copyright</Filter>
     </ClInclude>
@@ -185,6 +182,15 @@
       <Filter>Source Files\com.larson.MyGame\Basic OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Copyright\ctext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\callbacks.h">
+      <Filter>Source Files\com.larson.MyGame\Basic OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Basic OpenGL Stuff\camera1.h">
+      <Filter>Source Files\com.larson.MyGame\copyright</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Copyright\camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,17 +1,18 @@
-#ifndef CAMERA_H
+/*#ifndef CAMERA_H
 #define CAMERA_H
 #define GLM_ENABLE_EXPERIMENTAL
 
 #include <GLM/glm.hpp>
 #include <GLM/gtx/transform.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <vector>
 using namespace glm;
 
-struct Camera
+class Camera
 {
 public:
-	Camera(const vec3& position, float fov, float aspect, float zNear = 0.1f, float zFar = 100.0f);
-	void updateProjection(float fov, float aspect, float zNear, float zFar);
-	mat4 getViewProjection() const;
+	// Constructor with vectors
+	Camera(vec3 position = vec3(0.0f, 0.0f, 0.0f), vec3 up = vec3(0.0f, 1.0f, 0.0f), vec3 forward = vec3(0.0f, 0.0f, -1.0f), float yaw = -90.0f, float pitch = 0.0f, float mouseSensitivity = 0.1f, float zoom = 45.0f);
 	// Returns the view matrix calculated using Euler Angles and the LookAt Matrix
 	mat4 getViewMatrix() const;
 	mat4 getProjectionMatrix(float zNear = 0.1f, float zFar = 100.0f) const;
@@ -30,7 +31,6 @@ public:
 	void resize(const float width, const float height);
 protected:
 private:
-	mat4 projection;
 	vec3 position;
 	vec3 right;
 	vec3 up;
@@ -44,4 +44,4 @@ private:
 	// Calculates the forward vector from the Camera's (updated) Euler Angles
 	void updateCameraVectors();
 };
-#endif
+#endif*/

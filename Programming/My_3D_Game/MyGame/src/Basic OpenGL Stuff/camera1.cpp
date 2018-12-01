@@ -1,36 +1,40 @@
-#include "camera.h"
+/*#include "camera1.h"
 
-Camera::Camera(const vec3& position, float fov, float aspect, float zNear, float zFar)
+// Constructor
+Camera::Camera(vec3 position, vec3 up, vec3 forward, float yaw, float pitch, float mouseSensitivity, float zoom)
 {
 	this->position = position;
-	this->right = vec3(1.0f, 0.0f, 0.0f);
-	this->up = vec3(0.0f, 1.0f, 0.0f);
-	this->forward = vec3(0.0f, 0.0f, 1.0f);
-	this->projection = perspective(radians(fov), aspect, zNear, zFar);
-}
-void Camera::updateProjection(float fov, float aspect, float zNear, float zFar)
-{
-	this->projection = perspective(radians(fov), aspect, zNear, zFar);
+	this->forward = forward;
+	this->worldUp = up;
+	this->yaw = yaw;
+	this->pitch = pitch;
+	this->mouseSensitivity = mouseSensitivity;
+	this->zoom = zoom;
+	updateCameraVectors();
 }
 mat4 Camera::getProjectionMatrix(float zNear, float zFar) const
 {
 	return perspective(radians(zoom), aspect, zNear, zFar);
 }
-mat4 Camera::getViewProjection() const
+// Returns the view matrix calculated using Euler Angles and the LookAt Matrix
+mat4 Camera::getViewMatrix() const
 {
-	return projection * lookAt(position, position + forward, up);
+	return lookAt(position, position + forward, up);
 }
 void Camera::moveRight(float amount)
 {
 	position += cross(up, forward) * amount;
+	printf("Position: %f\n", amount);
 }
 void Camera::moveUp(float amount)
 {
 	position += up * amount;
+	printf("Position: %f\n", amount);
 }
 void Camera::moveForward(float amount)
 {
 	position += forward * amount;
+	printf("Position: %f\n", amount);
 }
 // Z-axis rotation
 void Camera::Roll(float angle)
@@ -67,7 +71,7 @@ void Camera::processMouseMovement(float xoffset, float yoffset, bool constrainPi
 		if (pitch > 89.0f)
 		{
 			pitch = 89.0f;
-		}
+		}	
 		else if (pitch < -89.0f)
 		{
 			pitch = -89.0f;
@@ -79,14 +83,14 @@ void Camera::processMouseMovement(float xoffset, float yoffset, bool constrainPi
 // Processes input received from a mouse scroll-wheel event
 void Camera::processMouseScroll(float yoffset)
 {
-	if (zoom >= 1.0f && zoom <= 45.0f)
+	if(zoom >= 1.0f && zoom <= 45.0f)
 	{
 		zoom -= yoffset;
 	}
-	if (zoom < 1.0f)
+	if(zoom < 1.0f)
 	{
 		zoom = 1.0f;
-	}
+	}	
 	else if (zoom > 45.0f)
 	{
 		zoom = 45.0f;
@@ -107,5 +111,5 @@ void Camera::updateCameraVectors()
 }
 void Camera::resize(const float width, const float height)
 {
-	aspect = width / height;
-}
+	aspect = width/height;
+}*/

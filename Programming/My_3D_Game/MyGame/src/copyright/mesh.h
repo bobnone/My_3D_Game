@@ -26,8 +26,6 @@ public:
 	// Used to get pre-defined Meshs
 	Mesh(int type);
 	// Used to create a custom mesh
-	Mesh(Vertice* vertices, unsigned int* indices);
-	// Used to create a custom mesh and manually specify the size
 	Mesh(Vertice* vertices, unsigned int numVertices, unsigned int* indices, unsigned int numIndices);
 	void draw();
 	~Mesh();

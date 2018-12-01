@@ -2,20 +2,13 @@
 
 mat4 BasicObject::getModel() const
 {
-	mat4 positionMat = translate(position);
-	mat4 scaleMat = glm::scale(scale);
+	mat4 positionMatrix = translate(position);
+	mat4 scaleMatrix = glm::scale(scale);
 	mat4 rotationX = rotate(rotation.x, vec3(1.0, 0.0, 0.0));
 	mat4 rotationY = rotate(rotation.y, vec3(0.0, 1.0, 0.0));
 	mat4 rotationZ = rotate(rotation.z, vec3(0.0, 0.0, 1.0));
-	mat4 rotationMat = rotationX * rotationY * rotationZ;
-	return positionMat * rotationMat * scaleMat;
-}
-// Model, View, and Projection (MVP)
-mat4 BasicObject::getMVP(const Camera& camera) const
-{
-	mat4 VP = camera.getViewProjection();
-	mat4 M = getModel();
-	return VP * M;//camera.getViewProjection() * getModel();
+	mat4 rotationMatrix = rotationX * rotationY * rotationZ;
+	return positionMatrix * rotationMatrix * scaleMatrix;
 }
 void BasicObject::setPosition(vec3 position)
 {

@@ -1,45 +1,4 @@
-#include "inputs.h"
-
-// Key callback
-void Inputs::keyRelease(GLFWwindow* window, int key, int scancode, int mods)
-{
-	if (key == GLFW_KEY_ESCAPE)
-	{
-		glfwSetWindowShouldClose(window, GL_TRUE);
-	}
-}
-// Key callback
-void Inputs::keyPress(GLFWwindow* window, int key, int scancode, int mods)
-{
-	if (key == GLFW_KEY_ESCAPE)
-	{
-		glfwSetWindowShouldClose(window, GL_TRUE);
-	}
-}
-// Key callback
-void Inputs::keyRepeat(GLFWwindow* window, int key, int scancode, int mods)
-{
-	if (key == GLFW_KEY_ESCAPE)
-	{
-		glfwSetWindowShouldClose(window, GL_TRUE);
-	}
-}
-// Mouse button callback
-void Inputs::mouseButtonCallback()
-{
-	//
-}
-// Scroll callback
-void Inputs::scrollCallback()
-{
-	//
-}
-// Update method
-void Inputs::update()
-{
-	//
-}
-void temp()
+/*void joystick()
 {
 	int present = glfwJoystickPresent(GLFW_JOYSTICK_1);
 	cout << "Joystick/Gamepad status: " << present << endl;
@@ -75,4 +34,4 @@ void temp()
 		}
 		//TODO: add more buttons and test code
 	}
-}
+}*/

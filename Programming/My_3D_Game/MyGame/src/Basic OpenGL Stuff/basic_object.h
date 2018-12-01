@@ -1,16 +1,18 @@
 #ifndef BASICOBJECT_H
 #define BASICOBJECT_H
+#define GLM_ENABLE_EXPERIMENTAL
 
+#include <GLM/glm.hpp>
+#include <GLM/gtx/transform.hpp>
 #include "game_math.h"
-#include "../Basic OpenGL Stuff/images.h"
-#include "../Copyright/camera.h"
+#include "images.h"
 #include "../Copyright/mesh.h"
+using namespace glm;
 
 class BasicObject
 {
 public:
 	mat4 getModel() const;
-	mat4 getMVP(const Camera& camera) const;
 	// Position:
 	void setPosition(vec3 position);
 	void setPosition(float x, float y, float z);

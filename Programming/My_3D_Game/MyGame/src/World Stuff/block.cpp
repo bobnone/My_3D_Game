@@ -3,6 +3,7 @@
 // To be overriden
 void Block::draw(Shader& shader, Camera& camera)
 {
+	//
 }
 // WorldCords:
 void Block::setWorldCords(vec3 position)

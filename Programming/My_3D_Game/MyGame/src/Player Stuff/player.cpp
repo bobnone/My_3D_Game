@@ -1,15 +1,17 @@
 #include "player.h"
 
-Player::Player(Images* images, Mesh* mesh, const string userName, const char* fileName, const float aspectRatio, const vec3 position, const float cameraDistance, const vec3 scale, const float zNear, const float zFar, const float fov)
+Player::Player(Images* images, Mesh* mesh, const string userName, const char* fileName, float aspect, vec3 position, vec3 rotation, vec3 scale, float cameraDistance, float movementSpeed)
 {
 	this->images = images;
 	this->mesh = mesh;
 	this->textureID = images->genTexture(fileName);
 	this->userName = userName;
 	this->position = position;
+	this->rotation = rotation;
 	this->scale = scale;
+	this->movementSpeed = movementSpeed;
 	solid = true;
-	camera = new Camera(vec3(position.x, position.y, position.z-cameraDistance), fov, aspectRatio, zNear, zFar);
+	camera = new Camera(vec3(position.x, position.y, position.z-cameraDistance),70.0f,aspect);
 	hud = new Hud(images, mesh, "./Resources/Textures/Character.png", vec3(2.0f, 2.0f, 0.0f), vec3(5.0f, 2.0f, 1.0f));
 }
 Player::~Player()
@@ -43,25 +45,28 @@ Camera* Player::getCamera()
 {
 	return camera;
 }
-void Player::updateProjection(const int width, const int height, float aspectRatio, float zNear, float zFar, float fov)
+void Player::resize(const int width, const int height)
 {
-	camera->updateProjection(fov, aspectRatio, zNear, zFar);
+	camera->resize(width, height);
 	hud->resize(width, height);
 }
-void Player::moveRight(float amount)
+void Player::moveRight(float deltaTime)
 {
+	float amount = movementSpeed * deltaTime;
 	setPositionX(position.x+amount);
 	camera->moveRight(amount);
 	hud->moveRight(amount);
 }
-void Player::moveUp(float amount)
+void Player::moveUp(float deltaTime)
 {
+	float amount = movementSpeed * deltaTime;
 	setPositionY(position.y + amount);
 	camera->moveUp(amount);
 	hud->moveUp(amount);
 }
-void Player::moveForward(float amount)
+void Player::moveForward(float deltaTime)
 {
+	float amount = movementSpeed * deltaTime;
 	setPositionZ(position.z + amount);
 	camera->moveForward(amount);
 	hud->moveForward(amount);

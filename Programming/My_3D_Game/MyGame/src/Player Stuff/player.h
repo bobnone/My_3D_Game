@@ -8,19 +8,19 @@
 class Player: public BasicObject
 {
 public:
-	Player(Images* images, Mesh* mesh, const string userName, const char* fileName, float aspectRatio, const vec3 position = vec3(0.0f, 0.0f, 0.0f), const float cameraDistance = 6.0f, const vec3 scale = vec3(1.0f, 1.0f, 1.0f), float zNear = 0.1f, float zFar = 100.0f, float fov = 70.0f);
+	Player(Images* images, Mesh* mesh, string userName, const char* fileName, float aspect, vec3 position = vec3(0.0f, 0.0f, 0.0f), vec3 rotation = vec3(0.0f, 0.0f, 0.0f), vec3 scale = vec3(1.0f, 1.0f, 1.0f), float cameraDistance = 6.0f, float movementSpeed = 2.5f);
 	~Player();
 	bool isGhost(); // Checks if the player is solid
 	void draw(Shader& shader);
 	string getUserName();
 	GLuint getTexture();
 	Camera* getCamera();
-	void updateProjection(const int width, const int height, float aspectRatio, float zNear = 0.1f, float zFar = 100.0f, float fov = 45.0f);
+	void resize(const int width, const int height);
 	// Movement:
-	void moveRight(float amount);
-	void moveUp(float amount);
-	void moveForward(float amount);
-	// Rotation:
+	void moveRight(float deltaTime);
+	void moveUp(float deltaTime);
+	void moveForward(float deltaTime);
+	// Forced Rotation: (normaly handled by the camera)
 	void Roll(float angle);
 	void Pitch(float angle);
 	void Yaw(float angle);
@@ -33,5 +33,6 @@ private:
 	Hud* hud;
 	Images* images;
 	void setSolid(bool solid);
+	float movementSpeed;
 };
 #endif

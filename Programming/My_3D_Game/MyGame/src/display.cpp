@@ -38,7 +38,6 @@ Display::Display(Settings* settings)
 {
 	this->settings = settings;
 
-
 	//primary monitor,multi-monitor,viewmode,multi-viewmodes,...
 	/*GLFWmonitor* primaryMonitor = glfwGetPrimaryMonitor();
 	int monitorCount;
@@ -91,13 +90,18 @@ Display::Display(Settings* settings)
 	// Create the window and stuff (temp)
 	glfwSwapInterval(1); //vsync 0=off/1=on
 	//glfwWindowHint(GLFW_MAXIMIZED, GL_TRUE);
-	window = glfwCreateWindow(settings->getWindowWidth(), settings->getWindowHeight(), "<My 3D Game>", 0, 0);
+	width = settings->getWindowWidth();
+	height = settings->getWindowHeight();
+	window = glfwCreateWindow(width, height, "<My 3D Game>", 0, 0);
 	if (window == NULL)
 	{
 		fprintf(stderr, "Failed to open GLFW window. If you have an Intel GPU, they are not 3.3 compatible. Try the 2.1 version of the tutorials.\n");
 		glfwTerminate();
 		return;
 	}
+	// Tells GLFW to capture our mouse
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	// Tells OpenGL to use this window
 	glfwMakeContextCurrent(window);
 }
 void Display::clear()
@@ -105,56 +109,60 @@ void Display::clear()
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 }
-void Display::update()
+// Input handleing
+void Display::processInputs(float deltaTime)
 {
-	//XXX:Temp input handleing
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+	{
+		glfwSetWindowShouldClose(window, true);
+	}	
 	if (glfwGetKey(window, GLFW_KEY_W)==GLFW_PRESS)
 	{
-		player->moveUp(0.1);
+		player->moveUp(deltaTime);
 	}
 	else if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
 	{
-		player->moveUp(-0.1);
+		player->moveUp(-deltaTime);
 	}
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 	{
-		player->moveRight(-0.1);
+		player->moveRight(-deltaTime);
 	}
 	else if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
 	{
-		player->moveRight(0.1);
+		player->moveRight(deltaTime);
 	}
 	if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
 	{
-		player->moveForward(0.1);
+		player->moveForward(deltaTime);
 	}
 	else if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
 	{
-		player->moveForward(-0.1);
-	}
-	if (glfwGetKey(window, GLFW_KEY_L) == GLFW_PRESS)
-	{
-		player->Roll(-0.1);
-	}
-	else if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS)
-	{
-		player->Roll(0.1);
-	}
-	if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS)
-	{
-		player->Pitch(-0.1);
-	}
-	else if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS)
-	{
-		player->Pitch(0.1);
+		player->moveForward(-deltaTime);
 	}
 	if (glfwGetKey(window, GLFW_KEY_U) == GLFW_PRESS)
 	{
-		player->Yaw(0.1);
+		player->Roll(-deltaTime);
 	}
 	else if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS)
 	{
-		player->Yaw(-0.1);
+		player->Roll(deltaTime);
+	}
+	if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS)
+	{
+		player->Pitch(-deltaTime);
+	}
+	else if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS)
+	{
+		player->Pitch(deltaTime);
+	}
+	if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS)
+	{
+		player->Yaw(deltaTime);
+	}
+	else if (glfwGetKey(window, GLFW_KEY_L) == GLFW_PRESS)
+	{
+		player->Yaw(-deltaTime);
 	}
 }
 void Display::init()
@@ -162,15 +170,16 @@ void Display::init()
 	images = new Images();
 	quadMesh = new Mesh(MESH_RECTANGLE);
 	shader = new Shader("./Data/gameShader");
-	text = new Text("./Data/textShader", settings->getWindowWidth(), settings->getWindowHeight());
+	text = new Text("./Data/textShader", width, height);
 	world = new World(images);
 	player = new Player(images, quadMesh, "bobnone", "./Resources/Textures/ANOTHERCHARACTERRRRquestionmark1.png", settings->getAspectRatio());
 	audio = new Audio(0, "./Resources/Music/Music5.wav");
+	resize(width, height);
 }
 void Display::draw()
 {
 	clear();
-	//shader->setCurrent();
+	//TODO:2Dshader->setCurrent();// For hud
 	text->draw("This is sample text", 25.0f, 25.0f, 1.0f, vec3(0.5, 0.8f, 0.2f));
 	text->draw("LearnOpenGL.com", 540.0f, 570.0f, 0.5f, vec3(0.3, 0.7f, 0.9f));
 	shader->setCurrent();
@@ -179,9 +188,11 @@ void Display::draw()
 }
 void Display::resize(const int width, const int height)
 {
+	this->width = width;
+	this->height = height;
 	settings->setWindowWidth(width);
 	settings->setWindowHeight(height);
-	player->updateProjection(width, height, settings->getAspectRatio());
+	player->resize(width, height);
 }
 Display::~Display()
 {
@@ -204,4 +215,16 @@ Display::~Display()
 GLFWwindow* Display::getWindow()
 {
 	return window;
+}
+int Display::getWindowWidth()
+{
+	return width;
+}
+int Display::getWindowHeight()
+{
+	return height;
+}
+Camera* Display::getCamera()
+{
+	return player->getCamera();
 }

@@ -2,43 +2,44 @@
 
 void Game::init()
 {
+	// ----------------------------------------------------------
+	// GLFW
+	// ----------------------------------------------------------
 	// Init GLFW
 	if (!glfwInit())
 	{
 		cerr << "ERROR: Failed to load GLFW!" << endl;
 		crash();
 	}
-	glfwWindowHint(GLFW_SAMPLES, 4); // 4x antialiasing
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); // We want OpenGL 3.3
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); // We don't want the old OpenGL 
+	glfwWindowHint(GLFW_SAMPLES, 4);// 4x antialiasing
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);// We want OpenGL version 3.X
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);// We want OpenGL version X.3
+	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);// To make MacOS happy;
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);// We don't want the old OpenGL 
+	// -----------------------------------------------------------// Init Settings
+	
 	// Init Settings
 	settings = new Settings();
 	// Init Display
 	display = new Display(settings);
-	// Init GLEW
-	glewExperimental = true; // Needed in core profile
-	GLenum err = glewInit();
-	if (err != GLEW_OK)
+	// Init Callbacks
+	callbacks = new Callbacks(display);
+
+	// -----------------------------------------------
+	// GLEW
+	// -----------------------------------------------
+	glewExperimental = true;// Needed in core profile
+	GLenum err = glewInit();// Init GLEW
+	if (err != GLEW_OK)// Check for errors
 	{
 		cerr << "ERROR: Failed to load GLEW! \nDetails: " << glewGetErrorString(err) << endl;
 		crash();
 	}
-	// Init Inputs
-	inputs = new Inputs();
-	// Init Callbacks
-	callbacks = new Callbacks(display, inputs);
-	// Setup Error Callback
-	callbacks->errorCallbacks();
-	// Setup display callbacks
-	callbacks->displayCallbacks();
-	// Setup monitor callbacks
-	callbacks->monitorCallbacks();
-	// Setup input callbacks
-	callbacks->inputCallbacks();
+	// -----------------------------------------------
 
-	// Set OpenGL options:
+	// -----------------------------------------------
+	// Set OpenGL options
+	// -----------------------------------------------
 	// Enable Depth
 	glEnable(GL_DEPTH_TEST);
 	// Enable Alpha
@@ -46,11 +47,15 @@ void Game::init()
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	// Enable Culling of hidden/unseen textures
 	glEnable(GL_CULL_FACE);
+	// -----------------------------------------------
 
 	// Init GL3W
 	//gl3wInit();
 
-	// DevIL version checking
+	// -----------------------------------------------
+	// DevIL
+	// -----------------------------------------------
+	// version checking
 	if((ilGetInteger(IL_VERSION_NUM) < IL_VERSION)
 	|| (iluGetInteger(ILU_VERSION_NUM) < ILU_VERSION)
 	|| (ilutGetInteger(ILUT_VERSION_NUM) < ILUT_VERSION))
@@ -58,7 +63,7 @@ void Game::init()
 		cerr << "ERROR: Failed to load DevIL! \nDeatils: Version mismatch!" << endl;
 		crash();
 	}
-	// Init DevIL
+	// Init DevIL Libraries
 	ilInit();
 	iluInit();
 	// Tell DevIL to use OpenGL
@@ -67,8 +72,10 @@ void Game::init()
 	ilutEnable(ILUT_OPENGL_CONV);
 	// Allows files to be overriden (if file already exist)
 	ilEnable(IL_FILE_OVERWRITE);
+	// -----------------------------------------------
 
 	display->init();
+	callbacks->initWindowCallbacks();
 }
 // Extention support Checker
 void Game::extentionSupport()
@@ -88,25 +95,33 @@ void Game::extentionSupport()
 	}
 }
 // Update method
-void Game::update()
+void Game::update(float deltaTime)
 {
-	// Checks to make sure a window/context are loaded.
+	//----------------------------------------------------
+	// Error checking
+	// ---------------------------------------------------
+	// Checks to make sure a window/context is loaded.
 	if(!glfwGetCurrentContext())
 	{
 		cerr << "ERROR: No window currently loaded!" << endl;
 		crash();
 	}
-
-	// Polls DevIL's Error stack for any errors that have occurred.
+	// Polls DevIL's Error stack for any errors that may have occurred.
 	ILenum ilError = ilGetError();
 	if (ilError != IL_NO_ERROR)
 	{
 		cerr << "ERROR: DevIL crashed! \nDeatils: " << iluErrorString(ilError) << endl;
 		crash();
 	}
+	//---------------------------------------------------
 
-	//TODO:update methods like Inputs->temp()
-	display->update();
+	// ------------------------------------------------
+	// Inputs
+	// ------------------------------------------------
+	// Get IO events (keys pressed/released, mouse moved etc.)
+	glfwPollEvents();
+	display->processInputs(deltaTime);
+	// ------------------------------------------------
 
 	// Get system time and date
 	//time_t systemTime;
@@ -114,19 +129,30 @@ void Game::update()
 	//tm system;
 	//localtime_s(&system, &systemTime);
 	//cout << (system.tm_year + 1900) << '-' << (system.tm_mon + 1) << '-' << system.tm_mday << '-' << (system.tm_hour) << ':' << (system.tm_min) << ':' << (system.tm_sec) << "\n";
+	
+	// ---------------------
+	// Rendering
+	// ---------------------
+	display->draw();
+	// ---------------------
 }
 // Constructor
 void Game::start()
 {
 	init();
+	// timing
+	float deltaTime = 0.0f;// Time between current frame and last frame
+	float lastFrameTime = 0.0f;// Time of last frame
 	double previousTime = glfwGetTime();
 	double currentTime;
 	int frameCount = 0;
 	// Game Loop
 	while(!glfwWindowShouldClose(display->getWindow()))
 	{
-		// Measure speed
+		// Measure speeds
 		currentTime = glfwGetTime();
+		deltaTime = 0.01f;//currentTime - lastFrameTime;
+		lastFrameTime = currentTime;
 		frameCount++;
 		// If last prinf() was more than 1 sec ago
 		if ((currentTime - previousTime) >= 1.0)
@@ -134,13 +160,12 @@ void Game::start()
 			// printf and reset timer
 			printf("%f ms/frame\n", (1000.0 / double(frameCount)));
 			printf("FPS: %d\n", frameCount);
+			printf("Delta Time: %d\n", deltaTime);
 			//TODO: add fps to hud (render text)
 			frameCount = 0;
 			previousTime += 1.0;
 		}
-		update();
-		glfwPollEvents();
-		display->draw();
+		update(deltaTime);
 		glfwSwapBuffers(display->getWindow());
 	}
 	// Shutdown the game
@@ -163,8 +188,6 @@ void Game::shutdown()
 	settings = NULL;
 	delete display;
 	display = NULL;
-	delete inputs;
-	inputs = NULL;
 	delete callbacks;
 	callbacks = NULL;
 	// Shutdown GLFW

@@ -146,11 +146,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Copyright\camera.cpp" />
     <ClCompile Include="src\Copyright\ctext.cpp" />
     <ClCompile Include="src\Copyright\audio.cpp" />
     <ClCompile Include="src\Basic OpenGL Stuff\basic_object.cpp" />
-    <ClCompile Include="src\Basic OpenGL Stuff\callbacks.cpp" />
-    <ClCompile Include="src\Copyright\camera.cpp" />
+    <ClCompile Include="src\callbacks.cpp" />
+    <ClCompile Include="src\Basic OpenGL Stuff\camera1.cpp" />
+    <ClCompile Include="src\Copyright\TempCamera.cpp" />
     <ClCompile Include="src\display.cpp" />
     <ClCompile Include="src\game.cpp" />
     <ClCompile Include="src\Basic OpenGL Stuff\game_math.cpp" />
@@ -169,18 +171,18 @@
     <ClCompile Include="src\World Stuff\world.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Copyright\camera.h" />
     <ClInclude Include="src\Copyright\ctext.h" />
     <ClInclude Include="src\Copyright\audio.h" />
     <ClInclude Include="src\Basic OpenGL Stuff\basic_object.h" />
-    <ClInclude Include="src\Basic OpenGL Stuff\callbacks.h" />
-    <ClInclude Include="src\Copyright\camera.h" />
+    <ClInclude Include="src\callbacks.h" />
+    <ClInclude Include="src\Basic OpenGL Stuff\camera1.h" />
     <ClInclude Include="src\TODO\database.h" />
     <ClInclude Include="src\display.h" />
     <ClInclude Include="src\Basic OpenGL Stuff\game_math.h" />
     <ClInclude Include="src\Player Stuff\hud.h" />
     <ClInclude Include="src\Basic OpenGL Stuff\images.h" />
     <ClInclude Include="src\Basic OpenGL Stuff\model.h" />
-    <ClInclude Include="src\Basic OpenGL Stuff\inputs.h" />
     <ClInclude Include="src\game.h" />
     <ClInclude Include="src\TODO\main_menu.h" />
     <ClInclude Include="src\Copyright\mesh.h" />
