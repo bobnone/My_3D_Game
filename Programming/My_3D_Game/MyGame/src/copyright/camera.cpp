@@ -1,36 +1,43 @@
 #include "camera.h"
 
-Camera::Camera(const vec3& position, float fov, float aspect, float zNear, float zFar)
+Camera::Camera(const vec3& position, float fov)
 {
 	this->position = position;
 	this->right = vec3(1.0f, 0.0f, 0.0f);
 	this->up = vec3(0.0f, 1.0f, 0.0f);
 	this->forward = vec3(0.0f, 0.0f, 1.0f);
-	this->projection = perspective(radians(fov), aspect, zNear, zFar);
+	//this->forward = forward;
+	//this->worldUp = up;
+	//this->yaw = yaw;
+	//this->pitch = pitch;
+	//this->mouseSensitivity = mouseSensitivity;
+	this->fov = fov;
+	zoom = fov;
+	//updateCameraVectors();
 }
-void Camera::updateProjection(float fov, float aspect, float zNear, float zFar)
+// Returns the view matrix calculated using Euler Angles and the LookAt Matrix
+mat4 Camera::getViewMatrix() const
 {
-	this->projection = perspective(radians(fov), aspect, zNear, zFar);
+	return lookAt(position, position + forward, up);
 }
 mat4 Camera::getProjectionMatrix(float zNear, float zFar) const
 {
 	return perspective(radians(zoom), aspect, zNear, zFar);
 }
-mat4 Camera::getViewProjection() const
-{
-	return projection * lookAt(position, position + forward, up);
-}
 void Camera::moveRight(float amount)
 {
 	position += cross(up, forward) * amount;
+	printf("Position: %f\n", amount);
 }
 void Camera::moveUp(float amount)
 {
 	position += up * amount;
+	printf("Position: %f\n", amount);
 }
 void Camera::moveForward(float amount)
 {
 	position += forward * amount;
+	printf("Position: %f\n", amount);
 }
 // Z-axis rotation
 void Camera::Roll(float angle)
@@ -79,7 +86,7 @@ void Camera::processMouseMovement(float xoffset, float yoffset, bool constrainPi
 // Processes input received from a mouse scroll-wheel event
 void Camera::processMouseScroll(float yoffset)
 {
-	if (zoom >= 1.0f && zoom <= 45.0f)
+	if (zoom >= 1.0f && zoom <= fov)
 	{
 		zoom -= yoffset;
 	}
@@ -87,9 +94,9 @@ void Camera::processMouseScroll(float yoffset)
 	{
 		zoom = 1.0f;
 	}
-	else if (zoom > 45.0f)
+	else if (zoom > fov)
 	{
-		zoom = 45.0f;
+		zoom = fov;
 	}
 }
 // Calculates the forward vector from the Camera's (updated) Euler Angles

@@ -188,9 +188,9 @@ void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
  *  @sa @ref scrolling
  *  @sa glfwSetScrollCallback
  */
-void scrollCallback(GLFWwindow* window, double xpos, double ypos)
+void scrollCallback(GLFWwindow* window, double xoffset, double yoffset)
 {
-	//camera->processMouseScroll(yoffset);
+	camera->processMouseScroll(yoffset);
 }
 /*	The function signature for window close callbacks.
  *

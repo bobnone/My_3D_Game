@@ -172,7 +172,7 @@ void Display::init()
 	shader = new Shader("./Data/gameShader");
 	text = new Text("./Data/textShader", width, height);
 	world = new World(images);
-	player = new Player(images, quadMesh, "bobnone", "./Resources/Textures/ANOTHERCHARACTERRRRquestionmark1.png", settings->getAspectRatio());
+	player = new Player(images, quadMesh, "bobnone", "./Resources/Textures/ANOTHERCHARACTERRRRquestionmark1.png");
 	audio = new Audio(0, "./Resources/Music/Music5.wav");
 	resize(width, height);
 }

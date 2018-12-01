@@ -8,7 +8,7 @@
 class Player: public BasicObject
 {
 public:
-	Player(Images* images, Mesh* mesh, string userName, const char* fileName, float aspect, vec3 position = vec3(0.0f, 0.0f, 0.0f), vec3 rotation = vec3(0.0f, 0.0f, 0.0f), vec3 scale = vec3(1.0f, 1.0f, 1.0f), float cameraDistance = 6.0f, float movementSpeed = 2.5f);
+	Player(Images* images, Mesh* mesh, string userName, const char* fileName, vec3 position = vec3(0.0f, 0.0f, 0.0f), vec3 rotation = vec3(0.0f, 0.0f, 0.0f), vec3 scale = vec3(1.0f, 1.0f, 1.0f), float cameraDistance = 6.0f, float movementSpeed = 2.5f);
 	~Player();
 	bool isGhost(); // Checks if the player is solid
 	void draw(Shader& shader);

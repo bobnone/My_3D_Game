@@ -1,6 +1,6 @@
 #include "player.h"
 
-Player::Player(Images* images, Mesh* mesh, const string userName, const char* fileName, float aspect, vec3 position, vec3 rotation, vec3 scale, float cameraDistance, float movementSpeed)
+Player::Player(Images* images, Mesh* mesh, const string userName, const char* fileName, vec3 position, vec3 rotation, vec3 scale, float cameraDistance, float movementSpeed)
 {
 	this->images = images;
 	this->mesh = mesh;
@@ -11,7 +11,7 @@ Player::Player(Images* images, Mesh* mesh, const string userName, const char* fi
 	this->scale = scale;
 	this->movementSpeed = movementSpeed;
 	solid = true;
-	camera = new Camera(vec3(position.x, position.y, position.z-cameraDistance),70.0f,aspect);
+	camera = new Camera(vec3(position.x, position.y, position.z-cameraDistance));
 	hud = new Hud(images, mesh, "./Resources/Textures/Character.png", vec3(2.0f, 2.0f, 0.0f), vec3(5.0f, 2.0f, 1.0f));
 }
 Player::~Player()

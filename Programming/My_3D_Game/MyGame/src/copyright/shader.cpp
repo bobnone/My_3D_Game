@@ -50,7 +50,7 @@ void Shader::setCurrent()
 void Shader::update(const BasicObject& basicObject, const Camera& camera)
 {
 	// Model, View, and Projection (MVP)
-	mat4 MVP = camera.getViewProjection() * basicObject.getModel();//camera.getProjectionMatrix() * camera.getViewMatrix() * basicObject.getModel();// MVP is multiplied backwards
+	mat4 MVP = camera.getProjectionMatrix() * camera.getViewMatrix() * basicObject.getModel();// MVP is multiplied backwards
 	mat4 Normal = basicObject.getModel();
 	glUniformMatrix4fv(uniforms[0], 1, GL_FALSE, &MVP[0][0]);
 	glUniformMatrix4fv(uniforms[1], 1, GL_FALSE, &Normal[0][0]);
