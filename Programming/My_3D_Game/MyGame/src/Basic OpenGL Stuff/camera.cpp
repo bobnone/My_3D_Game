@@ -3,9 +3,9 @@
 Camera::Camera(const vec3& position, float fov)
 {
 	this->position = position;
-	this->right = vec3(1.0f, 0.0f, 0.0f);
-	this->up = vec3(0.0f, 1.0f, 0.0f);
-	this->forward = vec3(0.0f, 0.0f, 1.0f);
+	this->right = vec3(1.0f, 0.0f, 0.0f);//remove
+	this->up = vec3(0.0f, 1.0f, 0.0f);//remove
+	this->forward = vec3(0.0f, 0.0f, 1.0f);//remove
 	//this->forward = forward;
 	//this->worldUp = up;
 	//this->yaw = yaw;

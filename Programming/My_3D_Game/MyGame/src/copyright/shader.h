@@ -4,7 +4,7 @@
 #include <GL/glew.h>
 #include <fstream>
 #include "../Basic OpenGL Stuff/basic_object.h"
-#include "../copyright/camera.h"
+#include "../Basic OpenGL Stuff/camera.h"
 #include <iostream>
 #include <string>
 using namespace std;

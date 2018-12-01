@@ -113,10 +113,7 @@
     <ClCompile Include="src\callbacks.cpp">
       <Filter>Source Files\com.larson.MyGame\Basic OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="src\Basic OpenGL Stuff\camera1.cpp">
-      <Filter>Source Files\com.larson.MyGame\copyright</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Copyright\camera.cpp">
+    <ClCompile Include="src\Basic OpenGL Stuff\camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -187,10 +184,7 @@
     <ClInclude Include="src\callbacks.h">
       <Filter>Source Files\com.larson.MyGame\Basic OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="src\Basic OpenGL Stuff\camera1.h">
-      <Filter>Source Files\com.larson.MyGame\copyright</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Copyright\camera.h">
+    <ClInclude Include="src\Basic OpenGL Stuff\camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
