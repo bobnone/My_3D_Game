@@ -19,6 +19,17 @@ else
 reader.close();
 return 0;
 }*/
+Settings::Settings()
+{
+	setFile("../../Data/Settings.txt");
+	// Define default values incase load dosen't load all values
+	setWindowWidth(640);
+	setWindowHeight(480);
+	setWindowMode(0);
+	setMonitor(0);
+	// Attempt to load the file
+	//XXX:load();
+}
 void Settings::setFile(string path)
 {
 	this->filePath = path;
@@ -114,15 +125,4 @@ void Settings::resize(const int width, const int height)
 {
 	setWindowWidth(width);
 	setWindowHeight(height);
-}
-Settings::Settings()
-{
-	setFile("../../Data/Settings.txt");
-	// Define default values incase load dosen't load all values
-	setWindowWidth(640);
-	setWindowHeight(480);
-	setWindowMode(0);
-	setMonitor(0);
-	// Attempt to load the file
-	//XXX:load();
 }

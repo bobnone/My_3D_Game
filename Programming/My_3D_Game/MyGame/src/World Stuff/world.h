@@ -12,6 +12,7 @@ public:
 protected:
 private:
 	Block* blocks[14];
-	Mesh* genCubeMesh();
+	Mesh* mesh;
+	void genCubeMesh();	
 };
 #endif

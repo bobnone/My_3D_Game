@@ -1,6 +1,6 @@
 #include "camera.h"
 
-Camera::Camera(const vec3& position, float fov)
+Camera::Camera(const vec3& position, const vec3& up, const vec3& forward, float yaw, float pitch, float mouseSensitivity, float fov)
 {
 	this->position = position;
 	this->right = vec3(1.0f, 0.0f, 0.0f);//remove
@@ -24,35 +24,35 @@ mat4 Camera::getProjectionMatrix(float zNear, float zFar) const
 {
 	return perspective(radians(zoom), aspect, zNear, zFar);
 }
-void Camera::moveRight(float amount)
+void Camera::moveRight(const float amount)
 {
 	position += cross(up, forward) * amount;
 	printf("Position: %f\n", amount);
 }
-void Camera::moveUp(float amount)
+void Camera::moveUp(const float amount)
 {
 	position += up * amount;
 	printf("Position: %f\n", amount);
 }
-void Camera::moveForward(float amount)
+void Camera::moveForward(const float amount)
 {
 	position += forward * amount;
 	printf("Position: %f\n", amount);
 }
 // Z-axis rotation
-void Camera::Roll(float angle)
+void Camera::Roll(const float angle)
 {
 	//
 }
 // X-axis rotation
-void Camera::Pitch(float angle)
+void Camera::Pitch(const float angle)
 {
 	vec3 right = normalize(cross(up, forward));
 	up = normalize(cross(forward, right));
 	forward = vec3(normalize(rotate(angle, right) * vec4(forward, 0.0)));
 }
 // Y-axis rotation
-void Camera::Yaw(float angle)
+void Camera::Yaw(const float angle)
 {
 	static const vec3 UP(0.0f, 1.0f, 0.0f);
 	mat4 rotation = rotate(angle, UP);

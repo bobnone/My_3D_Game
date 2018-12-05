@@ -8,13 +8,10 @@ using namespace glm;
 
 struct Model
 {
-public:
 	vector<vec3> position;
 	vector<vec2> texCoords;
 	vector<vec4> color;
 	vector<vec3> normal;
 	vector<unsigned int> indices;
-protected:
-private:
 };
 #endif

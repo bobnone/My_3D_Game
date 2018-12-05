@@ -1,39 +1,5 @@
 #include "display.h"
 
-void Display::resetWindow() //also used to initialy setup the window
-{
-	const char* TITLE = "<My 3D Game>";
-	// Window Options
-	glfwSwapInterval(1); //vsync 0=off/1=on
-	glfwWindowHint(GLFW_MAXIMIZED, GL_TRUE);
-	glfwWindowHint(GLFW_REFRESH_RATE, GLFW_DONT_CARE);
-	/*switch (settings->getWindowMode())
-	{
-	case 0: // Fullscreen
-		glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
-		glfwWindowHint(GLFW_DECORATED, GL_FALSE);
-		window = glfwCreateWindow(currentVideoMode->width, currentVideoMode->height, TITLE, primaryMonitor, 0);
-		break;
-	case 2: // Borderless-Windowed
-		glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
-		glfwWindowHint(GLFW_DECORATED, GL_FALSE);
-		window = glfwCreateWindow(settings->getWindowWidth(), settings->getWindowHeight(), TITLE, primaryMonitor, 0);
-		break;
-	default: // Windowed
-		glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
-		glfwWindowHint(GLFW_DECORATED, GL_TRUE);
-		window = glfwCreateWindow(settings->getWindowWidth(), settings->getWindowHeight(), TITLE, primaryMonitor, 0);
-		break;
-	}*/
-	//GLFWwindow* second_window = glfwCreateWindow(640, 480, "Second Window", NULL, first_window);
-	if (window == NULL)
-	{
-		fprintf(stderr, "Failed to open GLFW window. If you have an Intel GPU, they are not 3.3 compatible. Try the 2.1 version of the tutorials.\n");
-		glfwTerminate();
-		return;
-	}
-	glfwMakeContextCurrent(window);
-}
 Display::Display(Settings* settings)
 {
 	this->settings = settings;
@@ -104,6 +70,56 @@ Display::Display(Settings* settings)
 	// Tells OpenGL to use this window
 	glfwMakeContextCurrent(window);
 }
+Display::~Display()
+{
+	delete images;
+	images = NULL;
+	delete shader;
+	shader = NULL;
+	delete audio;
+	audio = NULL;
+	delete text;
+	text = NULL;
+	delete world;
+	world = NULL;
+	delete player;
+	player = NULL;
+	glfwDestroyWindow(window);
+}
+void Display::resetWindow()// Also used to initialy setup the window
+{
+	const char* TITLE = "<My 3D Game>";
+	// Window Options
+	glfwSwapInterval(1); //vsync 0=off/1=on
+	glfwWindowHint(GLFW_MAXIMIZED, GL_TRUE);
+	glfwWindowHint(GLFW_REFRESH_RATE, GLFW_DONT_CARE);
+	/*switch (settings->getWindowMode())
+	{
+	case 0: // Fullscreen
+		glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+		glfwWindowHint(GLFW_DECORATED, GL_FALSE);
+		window = glfwCreateWindow(currentVideoMode->width, currentVideoMode->height, TITLE, primaryMonitor, 0);
+		break;
+	case 2: // Borderless-Windowed
+		glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+		glfwWindowHint(GLFW_DECORATED, GL_FALSE);
+		window = glfwCreateWindow(settings->getWindowWidth(), settings->getWindowHeight(), TITLE, primaryMonitor, 0);
+		break;
+	default: // Windowed
+		glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
+		glfwWindowHint(GLFW_DECORATED, GL_TRUE);
+		window = glfwCreateWindow(settings->getWindowWidth(), settings->getWindowHeight(), TITLE, primaryMonitor, 0);
+		break;
+	}*/
+	//GLFWwindow* second_window = glfwCreateWindow(640, 480, "Second Window", NULL, first_window);
+	if (window == NULL)
+	{
+		fprintf(stderr, "Failed to open GLFW window. If you have an Intel GPU, they are not 3.3 compatible. Try the 2.1 version of the tutorials.\n");
+		glfwTerminate();
+		return;
+	}
+	glfwMakeContextCurrent(window);
+}
 void Display::clear()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -168,11 +184,10 @@ void Display::processInputs(float deltaTime)
 void Display::init()
 {
 	images = new Images();
-	quadMesh = new Mesh(MESH_RECTANGLE);
 	shader = new Shader("./Data/gameShader");
 	text = new Text("./Data/textShader", width, height);
 	world = new World(images);
-	player = new Player(images, quadMesh, "bobnone", "./Resources/Textures/ANOTHERCHARACTERRRRquestionmark1.png");
+	player = new Player(images, "bobnone", "./Resources/Textures/ANOTHERCHARACTERRRRquestionmark1.png");
 	audio = new Audio(0, "./Resources/Music/Music5.wav");
 	resize(width, height);
 }
@@ -182,35 +197,16 @@ void Display::draw()
 	//TODO:2Dshader->setCurrent();// For hud
 	text->draw("This is sample text", 25.0f, 25.0f, 1.0f, vec3(0.5, 0.8f, 0.2f));
 	text->draw("LearnOpenGL.com", 540.0f, 570.0f, 0.5f, vec3(0.3, 0.7f, 0.9f));
-	shader->setCurrent();
-	world->draw(*shader, *(player->getCamera()));
+	shader->use();
+	world->draw(*shader, *getCamera());
 	player->draw(*shader);
 }
 void Display::resize(const int width, const int height)
 {
 	this->width = width;
 	this->height = height;
-	settings->setWindowWidth(width);
-	settings->setWindowHeight(height);
+	settings->resize(width, height);
 	player->resize(width, height);
-}
-Display::~Display()
-{
-	delete images;
-	images = NULL;
-	delete quadMesh;
-	quadMesh = NULL;
-	delete shader;
-	shader = NULL;
-	delete audio;
-	audio = NULL;
-	delete text;
-	text = NULL;
-	delete world;
-	world = NULL;
-	delete player;
-	player = NULL;
-	glfwDestroyWindow(window);
 }
 GLFWwindow* Display::getWindow()
 {
@@ -218,11 +214,11 @@ GLFWwindow* Display::getWindow()
 }
 int Display::getWindowWidth()
 {
-	return width;
+	return settings->getWindowWidth();
 }
 int Display::getWindowHeight()
 {
-	return height;
+	return settings->getWindowHeight();
 }
 Camera* Display::getCamera()
 {

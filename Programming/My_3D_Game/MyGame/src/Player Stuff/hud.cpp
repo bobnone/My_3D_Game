@@ -1,6 +1,6 @@
 #include "hud.h"
 
-Hud::Hud(Images* images, Mesh* mesh, const char* fileName, const vec3 position, const vec3 scale)
+Hud::Hud(Images* images, Mesh* mesh, const char* fileName, const vec3 position, const vec3 rotation, const vec3 scale)
 {
 	this->images = images;
 	this->mesh = mesh;

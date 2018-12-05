@@ -53,9 +53,6 @@
     <ClCompile Include="src\Basic OpenGL Stuff\basic_object.cpp">
       <Filter>Source Files\com.larson.MyGame\Basic OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="src\Basic OpenGL Stuff\game_math.cpp">
-      <Filter>Source Files\com.larson.MyGame\Misc</Filter>
-    </ClCompile>
     <ClCompile Include="src\Basic OpenGL Stuff\inputs.cpp">
       <Filter>Source Files\com.larson.MyGame\Misc</Filter>
     </ClCompile>
@@ -120,9 +117,6 @@
   <ItemGroup>
     <ClInclude Include="src\Basic OpenGL Stuff\basic_object.h">
       <Filter>Source Files\com.larson.MyGame\Basic OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Basic OpenGL Stuff\game_math.h">
-      <Filter>Source Files\com.larson.MyGame\Misc</Filter>
     </ClInclude>
     <ClInclude Include="src\display.h">
       <Filter>Source Files\com.larson.MyGame\Misc</Filter>

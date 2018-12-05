@@ -3,46 +3,39 @@
 // To be overriden
 void Block::draw(Shader& shader, Camera& camera)
 {
-	//
 }
 // WorldCords:
-void Block::setWorldCords(vec3 position)
+void Block::setWorldCoordinates(vec3 worldCoordinates)
 {
-	worldCords = position;
+	this->worldCoordinates = worldCoordinates;
 }
-void Block::setWorldCords(float x, float y, float z)
+void Block::setWorldCoordinatesX(float x)
 {
-	worldCords.x = x;
-	worldCords.y = y;
-	worldCords.z = z;
+	worldCoordinates.x = x;
 }
-void Block::setWorldCordsX(float x)
+void Block::setWorldCoordinatesY(float y)
 {
-	worldCords.x = x;
+	worldCoordinates.y = y;
 }
-void Block::setWorldCordsY(float y)
+void Block::setWorldCoordinatesZ(float z)
 {
-	worldCords.y = y;
+	worldCoordinates.z = z;
 }
-void Block::setWorldCordsZ(float z)
+vec3 Block::getWorldCoordinates()
 {
-	worldCords.z = z;
+	return worldCoordinates;
 }
-vec3 Block::getWorldCords()
+float Block::getWorldCoordinatesX()
 {
-	return worldCords;
+	return worldCoordinates.x;
 }
-float Block::getWorldCordsX()
+float Block::getWorldCoordinatesY()
 {
-	return worldCords.x;
+	return worldCoordinates.y;
 }
-float Block::getWorldCordsY()
+float Block::getWorldCoordinatesZ()
 {
-	return worldCords.y;
-}
-float Block::getWorldCordsZ()
-{
-	return worldCords.z;
+	return worldCoordinates.z;
 }
 string Block::getName()
 {

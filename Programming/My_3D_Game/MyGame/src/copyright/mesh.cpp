@@ -19,7 +19,7 @@ Mesh::Mesh(int type)
 // Used to create a custom mesh
 Mesh::Mesh(Vertice* vertices, unsigned int numVertices, unsigned int* indices, unsigned int numIndices)
 {
-	init(vertices, numVertices, indices, numIndices);
+	createMesh(vertices, numVertices, indices, numIndices);
 }
 Mesh::~Mesh()
 {
@@ -32,7 +32,7 @@ void Mesh::draw()
 	glDrawElementsBaseVertex(GL_TRIANGLES, numIndices, GL_UNSIGNED_INT, 0, 0);
 	glBindVertexArray(NULL);
 }
-void Mesh::init(Vertice* vertices, unsigned int numVertices, unsigned int* indices, unsigned int numIndices)
+void Mesh::createMesh(Vertice* vertices, unsigned int numVertices, unsigned int* indices, unsigned int numIndices)
 {
 	this->numIndices = numIndices;
 	Model model;
@@ -83,7 +83,7 @@ void Mesh::genTriangleMesh()
 		Vertice(vec3(1.0f, 1.0f, 1.0f), vec2(1, 1)),// Top Left
 	};
 	unsigned int indices[] = { 2, 0, 1 };
-	init(vertices, 3, indices, 3);
+	createMesh(vertices, 3, indices, 3);
 }
 void Mesh::genRectangleMesh()
 {
@@ -95,7 +95,7 @@ void Mesh::genRectangleMesh()
 		Vertice(vec3(0.0f, 1.0f, 1.0f), vec2(0, 1))// Top Right
 	};
 	unsigned int indices[] = { 2, 0, 1 , 1, 3, 2 };
-	init(vertices, 4, indices, 6);
+	createMesh(vertices, 4, indices, 6);
 }
 void Mesh::genHexagonMesh()
 {
@@ -109,5 +109,5 @@ void Mesh::genHexagonMesh()
 		Vertice(vec3(0.5f, 0.0f, 0.0f), vec2(0, 1)) // Top Center    5
 	};
 	unsigned int indices[] = { 3, 5, 4 , 1, 3, 4, 1, 2, 4 , 1, 0, 2 };
-	init(vertices, 6, indices, 6);
+	createMesh(vertices, 6, indices, 6);
 }

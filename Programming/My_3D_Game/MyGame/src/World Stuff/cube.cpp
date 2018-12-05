@@ -6,7 +6,7 @@ Cube::Cube(Images* images, Mesh* mesh, const string name, const char* fileName, 
 	this->mesh = mesh;
 	this->textureID = images->genTexture(fileName);
 	this->position = position;
-	this->worldCords = position;
+	this->worldCoordinates = position;
 	this->rotation = rotation;
 	this->scale = scale;
 	this->name = name;

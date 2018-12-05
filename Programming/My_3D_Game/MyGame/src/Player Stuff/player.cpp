@@ -1,9 +1,9 @@
 #include "player.h"
 
-Player::Player(Images* images, Mesh* mesh, const string userName, const char* fileName, vec3 position, vec3 rotation, vec3 scale, float cameraDistance, float movementSpeed)
+Player::Player(Images* images, const string userName, const char* fileName, vec3 position, vec3 rotation, vec3 scale, float cameraDistance, float movementSpeed)
 {
 	this->images = images;
-	this->mesh = mesh;
+	this->mesh = new Mesh(MESH_RECTANGLE);
 	this->textureID = images->genTexture(fileName);
 	this->userName = userName;
 	this->position = position;
@@ -16,6 +16,8 @@ Player::Player(Images* images, Mesh* mesh, const string userName, const char* fi
 }
 Player::~Player()
 {
+	delete mesh;
+	mesh = NULL;
 	delete camera;
 	camera = NULL;
 	delete hud;

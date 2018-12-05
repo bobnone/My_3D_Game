@@ -43,7 +43,7 @@ GLuint Shader::getProgram()
 {
 	return program;
 }
-void Shader::setCurrent()
+void Shader::use()
 {
 	glUseProgram(program);
 }
@@ -114,7 +114,7 @@ GLuint Shader::CreateShader(const string& text, unsigned int type)
     p[0] = text.c_str();
     GLint lengths[1];
     lengths[0] = text.length();
-    glShaderSource(shader, 1, p, lengths);
+	glShaderSource(shader, 1, p, lengths);
     glCompileShader(shader);
     CheckShaderError(shader, GL_COMPILE_STATUS, false, "Error compiling shader!");
     return shader;

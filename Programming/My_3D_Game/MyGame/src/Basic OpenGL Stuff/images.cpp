@@ -86,7 +86,7 @@ ILuint Images::loadImage(const char* fileName)
 	return imageID;
 }
 // Used to load an image as a specific file type
-ILuint Images::loadImage(ILenum fileType, const char* fileName)
+ILuint Images::loadImage(const char* fileName, ILenum fileType)
 {
 	ILboolean error;
 	// Used to load an image
@@ -116,7 +116,7 @@ void Images::saveImage(const char* fileName)
 	}
 }
 // Used to save an image as a specific file type
-void Images::saveImage(ILenum fileType, const char* fileName)
+void Images::saveImage(const char* fileName, ILenum fileType)
 {
 	ILboolean error;
 	error = !ilSave(fileType, fileName);
@@ -156,11 +156,11 @@ GLuint Images::genTexture(const char* fileName)
 	return textureID;
 }
 // Used to generate a texture
-GLuint Images::genTexture(ILenum fileType, const char* fileName)
+GLuint Images::genTexture(const char* fileName, ILenum fileType)
 {
 	ILboolean error;
 	// Used to load an image
-	ILuint imageID = loadImage(fileType, fileName);
+	ILuint imageID = loadImage(fileName, fileType);
 	GLuint textureID;
 	glGenTextures(1, &textureID);
 	setTexture(textureID);
@@ -183,6 +183,7 @@ GLuint Images::genTexture(ILenum fileType, const char* fileName)
 GLuint Images::genTexture(ILuint imageID)
 {
 	ILboolean error;
+	setImage(imageID);
 	GLuint textureID;
 	glGenTextures(1, &textureID);
 	setTexture(textureID);
@@ -197,9 +198,19 @@ GLuint Images::genTexture(ILuint imageID)
 		fprintf(stderr, "ERROR: Failed to load texture from image \"%s\"\n", imageID);
 		//Game::crash();
 	}
-	// Builds Mipmaps from the current texture
-	glGenerateMipmap(GL_TEXTURE_2D);
 	return textureID;
+}
+// Builds Mipmaps from the current texture
+void Images::genMipmaps()
+{
+	glGenerateMipmap(GL_TEXTURE_2D);
+}
+/*Builds Mipmaps from the specified texture
+WARNING: binds the specified texture*/
+void Images::genMipmaps(const GLuint textureID)
+{
+	setTexture(textureID);
+	genMipmaps();
 }
 // Used to set the current texture
 void Images::setTexture(const GLuint textureID)

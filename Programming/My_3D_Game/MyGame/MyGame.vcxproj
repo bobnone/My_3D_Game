@@ -154,7 +154,6 @@
     <ClCompile Include="src\Copyright\TempCamera.cpp" />
     <ClCompile Include="src\display.cpp" />
     <ClCompile Include="src\game.cpp" />
-    <ClCompile Include="src\Basic OpenGL Stuff\game_math.cpp" />
     <ClCompile Include="src\Player Stuff\hud.cpp" />
     <ClCompile Include="src\Basic OpenGL Stuff\images.cpp" />
     <ClCompile Include="src\Basic OpenGL Stuff\inputs.cpp" />
@@ -177,7 +176,6 @@
     <ClInclude Include="src\callbacks.h" />
     <ClInclude Include="src\TODO\database.h" />
     <ClInclude Include="src\display.h" />
-    <ClInclude Include="src\Basic OpenGL Stuff\game_math.h" />
     <ClInclude Include="src\Player Stuff\hud.h" />
     <ClInclude Include="src\Basic OpenGL Stuff\images.h" />
     <ClInclude Include="src\Basic OpenGL Stuff\model.h" />

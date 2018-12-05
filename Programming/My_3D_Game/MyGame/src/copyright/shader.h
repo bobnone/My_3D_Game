@@ -13,20 +13,19 @@ class Shader
 {
 public:
 	Shader(const string& fileName);
-	void setCurrent();
-	void update(const BasicObject& basicObject, const Camera& camera);
 	~Shader();
 	GLuint getProgram();
+	void use();
+	void update(const BasicObject& basicObject, const Camera& camera);
 protected:
 private:
 	static const unsigned int NUM_SHADERS = 2;
 	static const unsigned int NUM_UNIFORMS = 4;
-
-	string LoadShader(const string& fileName);
-	void CheckShaderError(GLuint shader, GLuint flag, bool isProgram, const std::string& errorMessage);
-	GLuint CreateShader(const string& text, unsigned int type);
 	GLuint program;
 	GLuint shaders[NUM_SHADERS];
 	GLuint uniforms[NUM_UNIFORMS];
+	string LoadShader(const string& fileName);
+	void CheckShaderError(GLuint shader, GLuint flag, bool isProgram, const string& errorMessage);
+	GLuint CreateShader(const string& text, const unsigned int type);
 };
 #endif

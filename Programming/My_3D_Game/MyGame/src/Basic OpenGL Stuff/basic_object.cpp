@@ -10,25 +10,25 @@ mat4 BasicObject::getModel() const
 	mat4 rotationMatrix = rotationX * rotationY * rotationZ;
 	return positionMatrix * rotationMatrix * scaleMatrix;
 }
-void BasicObject::setPosition(vec3 position)
+void BasicObject::setPosition(const vec3 position)
 {
 	this->position = position;
 }
-void BasicObject::setPosition(float x, float y, float z)
+void BasicObject::setPosition(const float x, const float y, const float z)
 {
 	this->position = vec3(x, y, z);
 }
-void BasicObject::setPositionX(float x)
+void BasicObject::setPositionX(const float x)
 {
-	setPosition(x, position.y, position.z);
+	position.x = x;
 }
-void BasicObject::setPositionY(float y)
+void BasicObject::setPositionY(const float y)
 {
-	setPosition(position.x, y, position.z);
+	position.y = y;
 }
-void BasicObject::setPositionZ(float z)
+void BasicObject::setPositionZ(const float z)
 {
-	setPosition(position.x, position.y, z);
+	position.z = z;
 }
 vec3 BasicObject::getPosition()
 {
@@ -46,37 +46,37 @@ float BasicObject::getPositionZ()
 {
 	return position.z;
 }
-void BasicObject::setRotation(vec3 rotation)
+void BasicObject::setRotation(const vec3 rotation)
 {
 	this->rotation = rotation;
 }
-void BasicObject::setRotation(float x, float y, float z)
+void BasicObject::setRotation(const float x, const float y, const float z)
 {
 	this->rotation = vec3(x, y, z);
 }
-void BasicObject::setRotationX(float x)
+void BasicObject::setRotationX(const float x)
 {
-	setRotation(x, rotation.y, rotation.z);
+	rotation.x = x;
 }
-void BasicObject::setRotationY(float y)
+void BasicObject::setRotationY(const float y)
 {
-	setRotation(rotation.x, y, rotation.z);
+	rotation.y = y;
 }
-void BasicObject::setRotationZ(float z)
+void BasicObject::setRotationZ(const float z)
 {
-	setRotation(rotation.x, rotation.y, z);
+	rotation.z = z;
 }
-void BasicObject::setRotationDegreesX(int x)
+void BasicObject::setRotationDegreesX(const int x)
 {
-	setRotation(GameMath::getRadians(x), rotation.y, rotation.z);
+	rotation.x = radians(x);
 }
-void BasicObject::setRotationDegreesY(int y)
+void BasicObject::setRotationDegreesY(const int y)
 {
-	setRotation(rotation.x, GameMath::getRadians(y), rotation.z);
+	rotation.y = radians(y);
 }
-void BasicObject::setRotationDegreesZ(int z)
+void BasicObject::setRotationDegreesZ(const int z)
 {
-	setRotation(rotation.x, rotation.y, GameMath::getRadians(z));
+	rotation.z = radians(z);
 }
 /*void BasicObject::setRotationDegreesX(int x)
 {
@@ -160,25 +160,25 @@ float BasicObject::getRotationZ()
 {
 	return rotation.z;
 }
-void BasicObject::setScale(vec3 scale)
+void BasicObject::setScale(const vec3 scale)
 {
 	this->scale = scale;
 }
-void BasicObject::setScale(float x, float y, float z)
+void BasicObject::setScale(const float x, const float y, const float z)
 {
 	this->scale = vec3(x, y, z);
 }
-void BasicObject::setScaleX(float x)
+void BasicObject::setScaleX(const float x)
 {
-	setScale(x, scale.y, scale.z);
+	scale.x = x;
 }
-void BasicObject::setScaleY(float y)
+void BasicObject::setScaleY(const float y)
 {
-	setScale(scale.x, y, scale.z);
+	scale.y = y;
 }
-void BasicObject::setScaleZ(float z)
+void BasicObject::setScaleZ(const float z)
 {
-	setScale(scale.x, scale.y, z);
+	scale.z = z;
 }
 vec3 BasicObject::getScale()
 {
@@ -203,4 +203,8 @@ Mesh* BasicObject::getMesh()
 GLuint BasicObject::getTexture()
 {
 	return textureID;
+}
+float BasicObject::radians(const int x)
+{
+	return glm::radians((float)x);
 }

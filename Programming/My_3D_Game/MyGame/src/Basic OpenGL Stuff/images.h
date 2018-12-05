@@ -4,12 +4,10 @@
 #include <GL/glew.h>
 #include <ctime>
 #include <IL/ilut.h>
-//#include "../game.h"
 using namespace std;
 
-class Images
+struct Images
 {
-public:
 	// Takes a screenshot of the viewport
 	void screenshot();
 	// Takes a screenshot of the viewport (WARNING: overrides the image)
@@ -25,25 +23,27 @@ public:
 	// Used to load an image
 	ILuint loadImage(const char* fileName);
 	// Used to load an image as a specific file type
-	ILuint loadImage(ILenum fileType, const char* fileName);
+	ILuint loadImage(const char* fileName, ILenum fileType);
 	// Used to save an image
 	void saveImage(const char* fileName);
 	// Used to save an image as a specific file type
-	void saveImage(ILenum fileType, const char* fileName);
+	void saveImage(const char* fileName, ILenum fileType);
 	// Used to delete an image
 	void deleteImage(const ILuint* imageID);
 	// Used to generate a texture
 	GLuint genTexture(const char* fileName);
 	// Used to generate a texture
-	GLuint genTexture(ILenum fileType, const char* fileName);
+	GLuint genTexture(const char* fileName, ILenum fileType);
 	// Used to generate a texture from an image
 	GLuint genTexture(ILuint imageID);
+	// Builds Mipmaps from the current texture
+	void genMipmaps();
+	/*Builds Mipmaps from the specified texture
+	WARNING: binds the specified texture*/
+	void genMipmaps(const GLuint textureID);
 	// Used to set the current texture
 	void setTexture(const GLuint textureID);
 	// Used to delete the texture
 	void deleteTexture(const GLuint* textureID);
-protected:
-private:
-	//GLuint textureID;
 };
 #endif

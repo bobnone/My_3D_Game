@@ -10,10 +10,6 @@ class Game
 public:
 	// Start Game
 	void start();
-	// Update method
-	void update(float deltaTime);
-	// Used to crash the game
-	static void crash();
 protected:
 private:
 	Settings* settings;
@@ -22,9 +18,13 @@ private:
 
 	// Initial Setup
 	void init();
-	// Used to shutdown the game
-	void shutdown();
 	// Extention support Checker
 	void extentionSupport();
+	// Update method
+	void update(const float deltaTime);
+	// Used to crash the game
+	void crash();
+	// Used to shutdown the game
+	void shutdown();
 };
 #endif

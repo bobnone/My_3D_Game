@@ -161,7 +161,8 @@ Audio::Audio(int channel, const char* fileName)
 {
 	this->channel = channel;
 	ALmixer_Init(22050, 0, 0);
-	if (!(data = ALmixer_LoadAll(fileName, AL_FALSE)))
+	data = ALmixer_LoadAll(fileName, AL_FALSE);
+	if (!data)
 	{
 		printf("%s. Quiting program.\n", ALmixer_GetError());
 		exit(1);
@@ -173,14 +174,14 @@ Audio::Audio(int channel, const char* fileName)
 	printf("Is mp4 available: %d\n", ALmixer_IsDecoderAvailable("mp4"));
 	play(0);
 }
+Audio::~Audio()
+{
+	ALmixer_FreeData(data);
+	ALmixer_Quit();
+}
 // int times is number the number of times to loop/replay
 void Audio::play(int times)
 {
 	g_PlayingAudio[channel] = AL_TRUE;
 	ALmixer_PlayChannel(channel, data, times);
-}
-Audio::~Audio()
-{
-	ALmixer_FreeData(data);
-	ALmixer_Quit();
 }

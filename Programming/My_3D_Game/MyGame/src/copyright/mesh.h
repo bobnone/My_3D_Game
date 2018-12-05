@@ -27,8 +27,8 @@ public:
 	Mesh(int type);
 	// Used to create a custom mesh
 	Mesh(Vertice* vertices, unsigned int numVertices, unsigned int* indices, unsigned int numIndices);
-	void draw();
 	~Mesh();
+	void draw();
 protected:
 private:
 	static const unsigned int NUM_BUFFERS = 5;
@@ -36,7 +36,7 @@ private:
 	GLuint buffers[NUM_BUFFERS];
 	unsigned int numIndices;
 
-	void init(Vertice* vertices, unsigned int numVertices, unsigned int* indices, unsigned int numIndices);
+	void createMesh(Vertice* vertices, unsigned int numVertices, unsigned int* indices, unsigned int numIndices);
 	void genTriangleMesh();
 	void genRectangleMesh();
 	void genHexagonMesh();

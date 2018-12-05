@@ -9,9 +9,6 @@ class Settings
 {
 public:
 	Settings();
-	bool load();
-	bool save();
-	void resize(const int width, const int height);
 	void setFile(const string path);
 	string getFile();
 	void setWindowWidth(const int width);
@@ -23,6 +20,9 @@ public:
 	void setMonitor(const int monitor);
 	int getMonitor();
 	double getAspectRatio(); // The aspect ratio for the current width/height
+	bool load();
+	bool save();
+	void resize(const int width, const int height);
 protected:
 private:
 	string filePath;
@@ -30,7 +30,6 @@ private:
 	int windowHeight;
 	int windowMode; // 0 = fullscreen, 1 = windowed, 2 = borderless
 	int monitor; // 0 = primary
-	int roomRender; // number of rooms to render around your current position
 
 	bool load(const string path);
 	bool save(const string path);

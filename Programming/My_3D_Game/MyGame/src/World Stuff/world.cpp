@@ -2,7 +2,7 @@
 
 World::World(Images* images)
 {
-	Mesh* mesh = genCubeMesh();
+	genCubeMesh();
 	blocks[0] = new Cube(images, mesh, "wall", "./Resources/Textures/Tile.png", vec3(5.0f, -1.0f, 2.0f));
 	blocks[1] = new Cube(images, mesh, "wall", "./Resources/Textures/WALL1.png", vec3(0.0f, 0.0f, 2.0f));
 	blocks[2] = new Cube(images, mesh, "wall", "./Resources/Textures/WALL1.png", vec3(1.0f, 0.0f, 2.0f));
@@ -27,6 +27,8 @@ World::~World()
 		delete blocks[i];
 		blocks[i] = NULL;
 	}
+	delete mesh;
+	mesh = NULL;
 }
 void World::draw(Shader& shader, Camera& camera)
 {
@@ -35,7 +37,7 @@ void World::draw(Shader& shader, Camera& camera)
 		blocks[i]->draw(shader, camera);
 	}
 }
-Mesh* World::genCubeMesh()
+void World::genCubeMesh()
 {
 	Vertice vertices[] =
 	{
@@ -50,5 +52,5 @@ Mesh* World::genCubeMesh()
 	};
 	//						  Front 1, Front 2, Left 1, Left 2, Back 1, Back 2, Right 1, Right 2, Top 1, Top 2, Bottom 1, Bottom 2
 	unsigned int indices[] = { 2,0,1,   1,3,2,   3,1,5,  5,7,3,  5,4,6,  6,7,5,  2,6,4,   4,0,2,   6,2,3, 3,7,6, 1,0,4,    4,5,1 };
-	return new Mesh(vertices, 8, indices, 36);
+	mesh = new Mesh(vertices, 8, indices, 36);
 }

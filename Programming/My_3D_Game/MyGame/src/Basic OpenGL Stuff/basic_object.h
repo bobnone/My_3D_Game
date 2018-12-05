@@ -4,7 +4,6 @@
 
 #include <GLM/glm.hpp>
 #include <GLM/gtx/transform.hpp>
-#include "game_math.h"
 #include "images.h"
 #include "../Copyright/mesh.h"
 using namespace glm;
@@ -14,33 +13,33 @@ class BasicObject
 public:
 	mat4 getModel() const;
 	// Position:
-	void setPosition(vec3 position);
-	void setPosition(float x, float y, float z);
-	void setPositionX(float x);
-	void setPositionY(float y);
-	void setPositionZ(float z);
+	void setPosition(const vec3 position);
+	void setPosition(const float x, const float y, const float z);
+	void setPositionX(const float x);
+	void setPositionY(const float y);
+	void setPositionZ(const float z);
 	vec3 getPosition();
 	float getPositionX();
 	float getPositionY();
 	float getPositionZ();
 	// Rotation (Axis Rotation + Position):
-	void setRotation(vec3 rotation);
-	void setRotation(float x, float y, float z);
+	void setRotation(const vec3 rotation);
+	void setRotation(const float x, const float y, const float z);
 	// Radians
-	void setRotationX(float x);
-	void setRotationY(float y);
-	void setRotationZ(float z);
+	void setRotationX(const float x);
+	void setRotationY(const float y);
+	void setRotationZ(const float z);
 	//Degrees
-	void setRotationDegreesX(int x);
-	void setRotationDegreesY(int y);
-	void setRotationDegreesZ(int z);
+	void setRotationDegreesX(const int x);
+	void setRotationDegreesY(const int y);
+	void setRotationDegreesZ(const int z);
 	vec3 getRotation();
 	float getRotationX();
 	float getRotationY();
 	float getRotationZ();
 	// Scale:
-	void setScale(vec3 scale);
-	void setScale(float x, float y, float z);
+	void setScale(const vec3 scale);
+	void setScale(const float x, const float y, const float z);
 	void setScaleX(float x);
 	void setScaleY(float y);
 	void setScaleZ(float z);
@@ -57,6 +56,7 @@ protected:
 	Mesh* mesh;
 	GLuint textureID;
 	Images* images;
+	float radians(const int x);
 private:
 };
 #endif

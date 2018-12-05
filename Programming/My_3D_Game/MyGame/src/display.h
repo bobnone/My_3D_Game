@@ -33,7 +33,6 @@ private:
 	GLFWwindow* window;
 	Settings* settings;
 	Images* images;
-	Mesh* quadMesh;
 	Shader* shader;
 	Audio* audio;
 	Text* text;

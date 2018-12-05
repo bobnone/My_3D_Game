@@ -4,7 +4,7 @@ Text::Text(const char* fileName, const float width, const float height)
 {
 	this->shader = new Shader(fileName);
 	mat4 projection = ortho(0.0f, width, 0.0f, height);
-	shader->setCurrent();
+	shader->use();
 	glUniformMatrix4fv(glGetUniformLocation(shader->getProgram(), "projection"), 1, GL_FALSE, value_ptr(projection));
 	// FreeType
 	FT_Library ft;
@@ -76,7 +76,7 @@ Text::~Text()
 void Text::draw(string text, GLfloat x, GLfloat y, GLfloat scale, vec3 color)
 {
 	// Activate corresponding render state	
-	shader->setCurrent();
+	shader->use();
 	glUniform3f(glGetUniformLocation(shader->getProgram(), "textColor"), color.x, color.y, color.z);
 	glActiveTexture(GL_TEXTURE0);
 	glBindVertexArray(VAO);
